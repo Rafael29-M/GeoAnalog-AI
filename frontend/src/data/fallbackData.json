@@ -1,0 +1,933 @@
+{
+  "regions": [
+    {
+      "region": {
+        "id": "luna",
+        "name": "Luna",
+        "body": "moon",
+        "dataset_id": "moon-lola16",
+        "bounds": {
+          "west": 21.5,
+          "south": -1.3125,
+          "east": 25.5,
+          "north": 2.6875
+        },
+        "roughness_window_m": 12000.0,
+        "analysis_resolution_m": 4000.0,
+        "analysis_size_m": 64000.0,
+        "source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html",
+        "purpose": "Ventana regional de 64 km por eje centrada en esta caja; selección del prototipo, no media de todo el cuerpo ni límite geológico oficial."
+      },
+      "status": "processed",
+      "diagnostic": null
+    },
+    {
+      "region": {
+        "id": "marte",
+        "name": "Marte",
+        "body": "mars",
+        "dataset_id": "mars-mola16",
+        "bounds": {
+          "west": 137.0,
+          "south": -6.0,
+          "east": 139.0,
+          "north": -4.0
+        },
+        "roughness_window_m": 12000.0,
+        "analysis_resolution_m": 4000.0,
+        "analysis_size_m": 64000.0,
+        "source_url": "https://www.jpl.nasa.gov/images/pia12507-perspective-view-of-layered-mound-in-gale-crater-mars/",
+        "purpose": "Ventana regional de 64 km por eje centrada en esta caja; selección del prototipo, no media de todo el cuerpo ni límite geológico oficial."
+      },
+      "status": "processed",
+      "diagnostic": null
+    },
+    {
+      "region": {
+        "id": "tierra-atacama",
+        "name": "Atacama, Chile",
+        "body": "earth",
+        "dataset_id": "earth-nasadem-s25w070",
+        "bounds": {
+          "west": -69.95,
+          "east": -69.05,
+          "south": -24.69,
+          "north": -24.01
+        },
+        "roughness_window_m": 12000.0,
+        "analysis_resolution_m": 4000.0,
+        "analysis_size_m": 64000.0,
+        "source_url": "https://astrobiology.nasa.gov/nai/annual-reports/2008/seti/planetary-scale-transition-from-abiotic-to-biotic-nitrogen-cycle/",
+        "purpose": "Ventana de 64 km por eje en Atacama. Centro -24.35,-69.5 seleccionado al revisar tres posiciones por cobertura NUM/SWB, sin usar la similitud para elegirlo. No corresponde a límites geológicos oficiales."
+      },
+      "status": "processed",
+      "diagnostic": null
+    },
+    {
+      "region": {
+        "id": "tierra-arizona",
+        "name": "Arizona, Estados Unidos",
+        "body": "earth",
+        "dataset_id": "earth-nasadem-n35w112",
+        "bounds": {
+          "west": -112.0,
+          "south": 35.0,
+          "east": -111.0,
+          "north": 36.0
+        },
+        "roughness_window_m": 12000.0,
+        "analysis_resolution_m": 4000.0,
+        "analysis_size_m": 64000.0,
+        "source_url": "https://science.nasa.gov/solar-system/planetary-analogs/10-things-to-know-about-planetary-analogs/",
+        "purpose": "Ventana regional de 64 km por eje centrada en esta caja; selección del prototipo, no media de todo el cuerpo ni límite geológico oficial."
+      },
+      "status": "processed",
+      "diagnostic": null
+    },
+    {
+      "region": {
+        "id": "luna-tycho",
+        "name": "Cráter Tycho, Luna",
+        "body": "moon",
+        "dataset_id": "moon-lola16",
+        "bounds": {
+          "west": 346.5,
+          "south": -45.3,
+          "east": 350.5,
+          "north": -41.3
+        },
+        "roughness_window_m": 12000.0,
+        "analysis_resolution_m": 4000.0,
+        "analysis_size_m": 64000.0,
+        "source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html",
+        "purpose": "Ventana de 64 km por eje centrada en el cráter Tycho (~43.3°S, 11.4°W). Zona de alto impacto con rugosidad elevada; selección del prototipo, no límite geológico oficial."
+      },
+      "status": "processed",
+      "diagnostic": null
+    },
+    {
+      "region": {
+        "id": "marte-olympus",
+        "name": "Olympus Mons, Marte",
+        "body": "mars",
+        "dataset_id": "mars-mola16",
+        "bounds": {
+          "west": 224.0,
+          "south": 16.4,
+          "east": 228.0,
+          "north": 20.4
+        },
+        "roughness_window_m": 12000.0,
+        "analysis_resolution_m": 4000.0,
+        "analysis_size_m": 64000.0,
+        "source_url": "https://www.jpl.nasa.gov/images/pia02982-olympus-mons/",
+        "purpose": "Ventana de 64 km por eje sobre Olympus Mons (~18.4°N, 226°E), el volcán más alto del sistema solar. Selección del prototipo, no límite geológico oficial."
+      },
+      "status": "processed",
+      "diagnostic": null
+    },
+    {
+      "region": {
+        "id": "marte-valles",
+        "name": "Valles Marineris, Marte",
+        "body": "mars",
+        "dataset_id": "mars-mola16",
+        "bounds": {
+          "west": 298.0,
+          "south": -16.0,
+          "east": 302.0,
+          "north": -12.0
+        },
+        "roughness_window_m": 12000.0,
+        "analysis_resolution_m": 4000.0,
+        "analysis_size_m": 64000.0,
+        "source_url": "https://www.jpl.nasa.gov/images/pia00178-valles-marineris-hemisphere/",
+        "purpose": "Ventana de 64 km por eje en Coprates Chasma (~14°S, 300°E), sección central de Valles Marineris. Selección del prototipo, no límite geológico oficial."
+      },
+      "status": "processed",
+      "diagnostic": null
+    }
+  ],
+  "summary": [
+    {
+      "region_id": "luna",
+      "name": "Luna",
+      "body": "moon",
+      "status": "processed",
+      "height_mean_m": -1886.1999732405275,
+      "slope_mean_deg": 0.6517798097054441,
+      "roughness_mean_m": 37.63450060348186,
+      "dx_m": 4000.0,
+      "dy_m": 4000.0,
+      "quality": "validation_only",
+      "valid_fraction": 1.0
+    },
+    {
+      "region_id": "marte",
+      "name": "Marte",
+      "body": "mars",
+      "status": "processed",
+      "height_mean_m": -2528.7194071311305,
+      "slope_mean_deg": 7.1422502194309,
+      "roughness_mean_m": 425.78544884383706,
+      "dx_m": 4000.0,
+      "dy_m": 4000.0,
+      "quality": "validation_only",
+      "valid_fraction": 1.0
+    },
+    {
+      "region_id": "tierra-atacama",
+      "name": "Atacama, Chile",
+      "body": "earth",
+      "status": "processed",
+      "height_mean_m": 1874.0037093203518,
+      "slope_mean_deg": 1.9000719341548158,
+      "roughness_mean_m": 113.84743655001132,
+      "dx_m": 4000.0,
+      "dy_m": 4000.0,
+      "quality": "validation_only",
+      "valid_fraction": 1.0
+    },
+    {
+      "region_id": "tierra-arizona",
+      "name": "Arizona, Estados Unidos",
+      "body": "earth",
+      "status": "processed",
+      "height_mean_m": 1835.0171887442355,
+      "slope_mean_deg": 1.584672426305218,
+      "roughness_mean_m": 94.03547451790386,
+      "dx_m": 4000.0,
+      "dy_m": 4000.0,
+      "quality": "validation_only",
+      "valid_fraction": 1.0
+    },
+    {
+      "region_id": "luna-tycho",
+      "name": "Cráter Tycho, Luna",
+      "body": "moon",
+      "status": "processed",
+      "height_mean_m": -2216.5471677191017,
+      "slope_mean_deg": 6.3569831261725,
+      "roughness_mean_m": 378.94832575227406,
+      "dx_m": 4000.0,
+      "dy_m": 4000.0,
+      "quality": "validation_only",
+      "valid_fraction": 1.0
+    },
+    {
+      "region_id": "marte-olympus",
+      "name": "Olympus Mons, Marte",
+      "body": "mars",
+      "status": "processed",
+      "height_mean_m": 19338.749233639664,
+      "slope_mean_deg": 4.100311061681948,
+      "roughness_mean_m": 244.42484087079652,
+      "dx_m": 4000.0,
+      "dy_m": 4000.0,
+      "quality": "validation_only",
+      "valid_fraction": 1.0
+    },
+    {
+      "region_id": "marte-valles",
+      "name": "Valles Marineris, Marte",
+      "body": "mars",
+      "status": "processed",
+      "height_mean_m": 450.49323303533606,
+      "slope_mean_deg": 9.829661140280686,
+      "roughness_mean_m": 599.511860161021,
+      "dx_m": 4000.0,
+      "dy_m": 4000.0,
+      "quality": "validation_only",
+      "valid_fraction": 1.0
+    }
+  ],
+  "metrics": {
+    "tierra-arizona": {
+      "region_id": "tierra-arizona",
+      "dataset_id": "earth-nasadem-n35w112",
+      "body": "earth",
+      "created_at": "2026-11-14T21:05:50.515755+00:00",
+      "region_fingerprint": "229637609b186117ea890aa388ee728c25818e17a41bdcffe3e91c3a18ebc7de",
+      "source_sha256": "0f822bd0de4264b6127366a0dea4ac6b1b1e84a6f6a1df88d0f1eb3a08b0dcc5",
+      "label_sha256": null,
+      "method_version": "common-grid-terrain-v2",
+      "slope_method": "central_difference_physical_distances",
+      "roughness_method": "local_population_std_height_full_window",
+      "height_unit": "m",
+      "slope_unit": "degree",
+      "roughness_unit": "m",
+      "vertical_reference": "EGM96_geoid",
+      "bounds": {
+        "west": -111.85396392396052,
+        "south": 35.21106178814236,
+        "east": -111.14603607603948,
+        "north": 35.78841191648686
+      },
+      "rows": 16,
+      "columns": 16,
+      "valid_fraction": 1.0,
+      "slope_valid_fraction": 1.0,
+      "roughness_valid_fraction": 1.0,
+      "quality": "validation_only",
+      "scale": {
+        "dx_min_m": 4000.0,
+        "dx_max_m": 4000.0,
+        "dx_m": 4000.0,
+        "dy_m": 4000.0,
+        "width_m": 64000.0,
+        "height_m": 64000.0,
+        "roughness_rows": 3,
+        "roughness_columns": 3,
+        "roughness_width_m": 12000.0,
+        "roughness_height_m": 12000.0,
+        "roughness_requested_m": 12000.0,
+        "resampling": "area_average_local_aeqd_v1",
+        "native_dx_m": 25.202608726178173,
+        "native_dy_m": 30.819378285710098
+      },
+      "height": {
+        "count": 256,
+        "minimum": 1289.2369493109986,
+        "maximum": 3217.2914299625218,
+        "mean": 1835.0171887442355,
+        "std": 372.80574179933893,
+        "median": 1792.4835583933523,
+        "p10": 1384.480836848729,
+        "p25": 1546.9851357127823,
+        "p75": 2054.6620287816577,
+        "p90": 2345.5139234431317
+      },
+      "slope": {
+        "count": 196,
+        "minimum": 0.08839776832085425,
+        "maximum": 7.3177267230779846,
+        "mean": 1.584672426305218,
+        "std": 1.2276485636588568,
+        "median": 1.3044707765873806,
+        "p10": 0.5369605008313916,
+        "p25": 0.8662778730261348,
+        "p75": 1.8292678565764504,
+        "p90": 2.85905600570981
+      },
+      "roughness": {
+        "count": 196,
+        "minimum": 24.685789727712386,
+        "maximum": 353.6265431294807,
+        "mean": 94.03547451790386,
+        "std": 65.82464516478773,
+        "median": 78.91465480449465,
+        "p10": 37.600362509898645,
+        "p25": 52.284998768874914,
+        "p75": 105.29107770677479,
+        "p90": 182.49017802802655
+      },
+      "artifacts": {
+        "geotiff": "data/processed/earth/tierra-arizona/terrain.tif"
+      },
+      "warnings": [
+        "NASADEM combina varias fuentes y rellenos; una celda no implica una observación independiente.",
+        "Se aplican NUM y SWB: se excluyen agua y errores de fuente antes de agregar.",
+        "Estadísticas exploratorias; no prueba de analogía geológica.",
+        "Rugosidad = desviación estándar local de altura; incluye tendencias de pendiente.",
+        "Se excluyen bordes y vecindarios con nodata; la ventana efectiva se registra en metros.",
+        "Agregación a malla física común; ranking exploratorio, con distinta densidad/calidad de observaciones de origen."
+      ],
+      "runtime": {
+        "python": "3.13.7",
+        "numpy": "2.5.4",
+        "rasterio": "1.5.2",
+        "gdal": "3.12.2"
+      }
+    },
+    "tierra-atacama": {
+      "region_id": "tierra-atacama",
+      "dataset_id": "earth-nasadem-s25w070",
+      "body": "earth",
+      "created_at": "2026-11-14T21:05:49.927566+00:00",
+      "region_fingerprint": "2eb3694d6ee3d1d8af7b62ca21eabef71a5dd3904c9d2445ceb9d7968f0d4c05",
+      "source_sha256": "900ad34ea8fd8e72afae599e236b39d5bae2d74e2b4a80980106fa3cd90a1244",
+      "label_sha256": null,
+      "method_version": "common-grid-terrain-v2",
+      "slope_method": "central_difference_physical_distances",
+      "roughness_method": "local_population_std_height_full_window",
+      "height_unit": "m",
+      "slope_unit": "degree",
+      "roughness_unit": "m",
+      "vertical_reference": "EGM96_geoid",
+      "bounds": {
+        "west": -69.81606893873975,
+        "south": -24.638898836377365,
+        "east": -69.18393106126027,
+        "north": -24.060764298396123
+      },
+      "rows": 16,
+      "columns": 16,
+      "valid_fraction": 0.9921875,
+      "slope_valid_fraction": 0.9693877551020408,
+      "roughness_valid_fraction": 0.9387755102040817,
+      "quality": "validation_only",
+      "scale": {
+        "dx_min_m": 4000.0,
+        "dx_max_m": 4000.0,
+        "dx_m": 4000.0,
+        "dy_m": 4000.0,
+        "width_m": 64000.0,
+        "height_m": 64000.0,
+        "roughness_rows": 3,
+        "roughness_columns": 3,
+        "roughness_width_m": 12000.0,
+        "roughness_height_m": 12000.0,
+        "roughness_requested_m": 12000.0,
+        "resampling": "area_average_local_aeqd_v1",
+        "native_dx_m": 28.187414211923173,
+        "native_dy_m": 30.767583174166642
+      },
+      "height": {
+        "count": 254,
+        "minimum": 999.1109787084173,
+        "maximum": 3362.6081317363814,
+        "mean": 1874.0037093203518,
+        "std": 498.05476178932906,
+        "median": 1783.865453470065,
+        "p10": 1271.896847466785,
+        "p25": 1537.600987422341,
+        "p75": 2166.697504260237,
+        "p90": 2604.2478159575694
+      },
+      "slope": {
+        "count": 190,
+        "minimum": 0.30447835241002863,
+        "maximum": 6.279430048566205,
+        "mean": 1.9000719341548158,
+        "std": 1.1263070168971827,
+        "median": 1.7961900344434576,
+        "p10": 0.7167472669587115,
+        "p25": 0.9767090419597309,
+        "p75": 2.5011910754161653,
+        "p90": 3.2601989221169427
+      },
+      "roughness": {
+        "count": 184,
+        "minimum": 27.18095265915189,
+        "maximum": 323.4903490940591,
+        "mean": 113.84743655001132,
+        "std": 60.28147393792011,
+        "median": 103.92330180771705,
+        "p10": 45.3209995286086,
+        "p25": 65.62567671267725,
+        "p75": 145.01170203381872,
+        "p90": 194.58587699316934
+      },
+      "artifacts": {
+        "geotiff": "data/processed/earth/tierra-atacama/terrain.tif"
+      },
+      "warnings": [
+        "NASADEM combina varias fuentes y rellenos; una celda no implica una observación independiente.",
+        "Se aplican NUM y SWB: se excluyen agua y errores de fuente antes de agregar.",
+        "Estadísticas exploratorias; no prueba de analogía geológica.",
+        "Rugosidad = desviación estándar local de altura; incluye tendencias de pendiente.",
+        "Se excluyen bordes y vecindarios con nodata; la ventana efectiva se registra en metros.",
+        "Agregación a malla física común; ranking exploratorio, con distinta densidad/calidad de observaciones de origen."
+      ],
+      "runtime": {
+        "python": "3.13.7",
+        "numpy": "2.5.4",
+        "rasterio": "1.5.2",
+        "gdal": "3.12.2"
+      }
+    },
+    "marte": {
+      "region_id": "marte",
+      "dataset_id": "mars-mola16",
+      "body": "mars",
+      "created_at": "2026-11-14T21:05:49.285139+00:00",
+      "region_fingerprint": "d020ad3e8f11ce94ffd2ffab8f307bfa4ba5f977e748fd15d964212af995fc3a",
+      "source_sha256": "d18d9b9ab8c5516d02e157dd2cde0f1d0d160c21940e953ba22391269a545e7b",
+      "label_sha256": "0f2bd919dddb86d83489a008d3007bd915507c892a0f22ce49ad5dd5d2fc7d8a",
+      "method_version": "common-grid-terrain-v2",
+      "slope_method": "central_difference_physical_distances",
+      "roughness_method": "local_population_std_height_full_window",
+      "height_unit": "m",
+      "slope_unit": "degree",
+      "roughness_unit": "m",
+      "vertical_reference": "MOLA_areoid_GMM3_degree_order_50",
+      "bounds": {
+        "west": 137.45758506986175,
+        "south": -5.539889559605016,
+        "east": 138.54241493013825,
+        "north": -4.459896061471784
+      },
+      "rows": 16,
+      "columns": 16,
+      "valid_fraction": 1.0,
+      "slope_valid_fraction": 1.0,
+      "roughness_valid_fraction": 1.0,
+      "quality": "validation_only",
+      "scale": {
+        "dx_min_m": 4000.0,
+        "dx_max_m": 4000.0,
+        "dx_m": 4000.0,
+        "dy_m": 4000.0,
+        "width_m": 64000.0,
+        "height_m": 64000.0,
+        "roughness_rows": 3,
+        "roughness_columns": 3,
+        "roughness_width_m": 12000.0,
+        "roughness_height_m": 12000.0,
+        "roughness_requested_m": 12000.0,
+        "resampling": "area_average_local_aeqd_v1",
+        "native_dx_m": 3690.3647435618614,
+        "native_dy_m": 3704.4613373579646
+      },
+      "height": {
+        "count": 256,
+        "minimum": -4500.5258055865825,
+        "maximum": 352.17502199054144,
+        "mean": -2528.7194071311305,
+        "std": 1304.1694133807703,
+        "median": -2524.492769451662,
+        "p10": -4245.241679946537,
+        "p25": -3758.7099043133944,
+        "p75": -1613.4837835287717,
+        "p90": -515.7522917756442
+      },
+      "slope": {
+        "count": 196,
+        "minimum": 0.038773123851888414,
+        "maximum": 19.167029601853574,
+        "mean": 7.1422502194309,
+        "std": 4.448165839263757,
+        "median": 6.533748516806089,
+        "p10": 1.5892428025288627,
+        "p25": 3.466519179104246,
+        "p75": 9.931676687383165,
+        "p90": 14.000891044575582
+      },
+      "roughness": {
+        "count": 196,
+        "minimum": 25.264209353381236,
+        "maximum": 962.614474189245,
+        "mean": 425.78544884383706,
+        "std": 235.9637970952488,
+        "median": 380.6986430014693,
+        "p10": 130.2486150058059,
+        "p25": 237.51602660177954,
+        "p75": 594.1296862980785,
+        "p90": 792.2013990328563
+      },
+      "artifacts": {
+        "geotiff": "data/processed/mars/marte/terrain.tif"
+      },
+      "warnings": [
+        "Resolución gruesa: validación regional, no interpretación geológica detallada.",
+        "La interpolación del producto no equivale a observaciones independientes por píxel.",
+        "La etiqueta no declara nodata; no se inventa un valor centinela.",
+        "HDR ENVI declara data ignore value=0, pero LBL/XML no lo declaran; se priorizan las etiquetas científicas y se conservan esos valores de topografía.",
+        "Estadísticas exploratorias; no prueba de analogía geológica.",
+        "Rugosidad = desviación estándar local de altura; incluye tendencias de pendiente.",
+        "Se excluyen bordes y vecindarios con nodata; la ventana efectiva se registra en metros.",
+        "Agregación a malla física común; ranking exploratorio, con distinta densidad/calidad de observaciones de origen."
+      ],
+      "runtime": {
+        "python": "3.13.7",
+        "numpy": "2.5.4",
+        "rasterio": "1.5.2",
+        "gdal": "3.12.2"
+      }
+    },
+    "marte-olympus": {
+      "region_id": "marte-olympus",
+      "dataset_id": "mars-mola16",
+      "body": "mars",
+      "created_at": "2026-11-14T21:05:50.758453+00:00",
+      "region_fingerprint": "03c4ee117d387a407df3f695c80185f363b4c43474bd0926e71c46bfde5b7f61",
+      "source_sha256": "d18d9b9ab8c5516d02e157dd2cde0f1d0d160c21940e953ba22391269a545e7b",
+      "label_sha256": "0f2bd919dddb86d83489a008d3007bd915507c892a0f22ce49ad5dd5d2fc7d8a",
+      "method_version": "common-grid-terrain-v2",
+      "slope_method": "central_difference_physical_distances",
+      "roughness_method": "local_population_std_height_full_window",
+      "height_unit": "m",
+      "slope_unit": "degree",
+      "roughness_unit": "m",
+      "vertical_reference": "MOLA_areoid_GMM3_degree_order_50",
+      "bounds": {
+        "west": 225.42921789827963,
+        "south": 17.859274873029136,
+        "east": 226.57078210172034,
+        "north": 18.939889559605014
+      },
+      "rows": 16,
+      "columns": 16,
+      "valid_fraction": 1.0,
+      "slope_valid_fraction": 1.0,
+      "roughness_valid_fraction": 1.0,
+      "quality": "validation_only",
+      "scale": {
+        "dx_min_m": 4000.0,
+        "dx_max_m": 4000.0,
+        "dx_m": 4000.0,
+        "dy_m": 4000.0,
+        "width_m": 64000.0,
+        "height_m": 64000.0,
+        "roughness_rows": 3,
+        "roughness_columns": 3,
+        "roughness_width_m": 12000.0,
+        "roughness_height_m": 12000.0,
+        "roughness_requested_m": 12000.0,
+        "resampling": "area_average_local_aeqd_v1",
+        "native_dx_m": 3515.0744990834633,
+        "native_dy_m": 3704.4613373579646
+      },
+      "height": {
+        "count": 256,
+        "minimum": 17803.835203895967,
+        "maximum": 20758.550427719776,
+        "mean": 19338.749233639664,
+        "std": 806.1778631629368,
+        "median": 19514.902131482908,
+        "p10": 18177.148705048152,
+        "p25": 18612.898783159086,
+        "p75": 19978.168698825757,
+        "p90": 20341.02044083742
+      },
+      "slope": {
+        "count": 196,
+        "minimum": 0.5470399335230935,
+        "maximum": 17.339081456832275,
+        "mean": 4.100311061681948,
+        "std": 3.317970811226637,
+        "median": 3.0086558650722877,
+        "p10": 1.1839656285047035,
+        "p25": 1.9438360067358391,
+        "p75": 5.197660400513843,
+        "p90": 9.422183436701975
+      },
+      "roughness": {
+        "count": 196,
+        "minimum": 47.76199774021747,
+        "maximum": 955.8954187711042,
+        "mean": 244.42484087079652,
+        "std": 185.46614043929918,
+        "median": 182.95103793686116,
+        "p10": 79.35288451371436,
+        "p25": 113.07902036992459,
+        "p75": 301.90645892500925,
+        "p90": 559.2869794145247
+      },
+      "artifacts": {
+        "geotiff": "data/processed/mars/marte-olympus/terrain.tif"
+      },
+      "warnings": [
+        "Resolución gruesa: validación regional, no interpretación geológica detallada.",
+        "La interpolación del producto no equivale a observaciones independientes por píxel.",
+        "La etiqueta no declara nodata; no se inventa un valor centinela.",
+        "HDR ENVI declara data ignore value=0, pero LBL/XML no lo declaran; se priorizan las etiquetas científicas y se conservan esos valores de topografía.",
+        "Estadísticas exploratorias; no prueba de analogía geológica.",
+        "Rugosidad = desviación estándar local de altura; incluye tendencias de pendiente.",
+        "Se excluyen bordes y vecindarios con nodata; la ventana efectiva se registra en metros.",
+        "Agregación a malla física común; ranking exploratorio, con distinta densidad/calidad de observaciones de origen."
+      ],
+      "runtime": {
+        "python": "3.13.7",
+        "numpy": "2.5.4",
+        "rasterio": "1.5.2",
+        "gdal": "3.12.2"
+      }
+    },
+    "marte-valles": {
+      "region_id": "marte-valles",
+      "dataset_id": "mars-mola16",
+      "body": "mars",
+      "created_at": "2026-11-14T21:05:50.902448+00:00",
+      "region_fingerprint": "20e0f7367837e88e0885266c8108d79354829bd80109dde54c039dd72d303a27",
+      "source_sha256": "d18d9b9ab8c5516d02e157dd2cde0f1d0d160c21940e953ba22391269a545e7b",
+      "label_sha256": "0f2bd919dddb86d83489a008d3007bd915507c892a0f22ce49ad5dd5d2fc7d8a",
+      "method_version": "common-grid-terrain-v2",
+      "slope_method": "central_difference_physical_distances",
+      "roughness_method": "local_population_std_height_full_window",
+      "height_unit": "m",
+      "slope_unit": "degree",
+      "roughness_unit": "m",
+      "vertical_reference": "MOLA_areoid_GMM3_degree_order_50",
+      "bounds": {
+        "west": 299.4422566705447,
+        "south": -14.539889559605017,
+        "east": 300.5577433294554,
+        "north": -13.459485681702226
+      },
+      "rows": 16,
+      "columns": 16,
+      "valid_fraction": 1.0,
+      "slope_valid_fraction": 1.0,
+      "roughness_valid_fraction": 1.0,
+      "quality": "validation_only",
+      "scale": {
+        "dx_min_m": 4000.0,
+        "dx_max_m": 4000.0,
+        "dx_m": 4000.0,
+        "dy_m": 4000.0,
+        "width_m": 64000.0,
+        "height_m": 64000.0,
+        "roughness_rows": 3,
+        "roughness_columns": 3,
+        "roughness_width_m": 12000.0,
+        "roughness_height_m": 12000.0,
+        "roughness_requested_m": 12000.0,
+        "resampling": "area_average_local_aeqd_v1",
+        "native_dx_m": 3594.4230037930956,
+        "native_dy_m": 3704.4613373579646
+      },
+      "height": {
+        "count": 256,
+        "minimum": -5005.737943396148,
+        "maximum": 3525.4316071792164,
+        "mean": 450.49323303533606,
+        "std": 2877.2856800398645,
+        "median": 819.6600412487142,
+        "p10": -3913.5287002198284,
+        "p25": -2156.141782430573,
+        "p75": 3285.2622479009915,
+        "p90": 3438.0074778217486
+      },
+      "slope": {
+        "count": 196,
+        "minimum": 0.06363760418758266,
+        "maximum": 28.666555720150754,
+        "mean": 9.829661140280686,
+        "std": 7.780983117367794,
+        "median": 9.727152711623297,
+        "p10": 0.5038350246323743,
+        "p25": 1.1092247739571635,
+        "p75": 15.499512765791962,
+        "p90": 20.405882850364947
+      },
+      "roughness": {
+        "count": 196,
+        "minimum": 9.765895357395022,
+        "maximum": 1640.3133695092206,
+        "mean": 599.511860161021,
+        "std": 449.7545470259154,
+        "median": 586.8188992328273,
+        "p10": 29.224227648843236,
+        "p25": 100.90827417600737,
+        "p75": 895.032106714163,
+        "p90": 1238.4476821894818
+      },
+      "artifacts": {
+        "geotiff": "data/processed/mars/marte-valles/terrain.tif"
+      },
+      "warnings": [
+        "Resolución gruesa: validación regional, no interpretación geológica detallada.",
+        "La interpolación del producto no equivale a observaciones independientes por píxel.",
+        "La etiqueta no declara nodata; no se inventa un valor centinela.",
+        "HDR ENVI declara data ignore value=0, pero LBL/XML no lo declaran; se priorizan las etiquetas científicas y se conservan esos valores de topografía.",
+        "Estadísticas exploratorias; no prueba de analogía geológica.",
+        "Rugosidad = desviación estándar local de altura; incluye tendencias de pendiente.",
+        "Se excluyen bordes y vecindarios con nodata; la ventana efectiva se registra en metros.",
+        "Agregación a malla física común; ranking exploratorio, con distinta densidad/calidad de observaciones de origen."
+      ],
+      "runtime": {
+        "python": "3.13.7",
+        "numpy": "2.5.4",
+        "rasterio": "1.5.2",
+        "gdal": "3.12.2"
+      }
+    },
+    "luna": {
+      "region_id": "luna",
+      "dataset_id": "moon-lola16",
+      "body": "moon",
+      "created_at": "2026-11-14T21:05:49.150069+00:00",
+      "region_fingerprint": "bab1ab9b62b30f6902cd33f44ff6c0b4e9d56ca8cd0bcbec04b2b2c53b2b5466",
+      "source_sha256": "a511e40d7a3ea3275945b4da2a1df377133264fab0be94b7434b1cf8907254cb",
+      "label_sha256": "9aef29463ccc6ed3a3fbe0df3ecd830a99c69e16b564f455507dee2697096579",
+      "method_version": "common-grid-terrain-v2",
+      "slope_method": "central_difference_physical_distances",
+      "roughness_method": "local_population_std_height_full_window",
+      "height_unit": "m",
+      "slope_unit": "degree",
+      "roughness_unit": "m",
+      "vertical_reference": "height_above_reference_sphere_1737400_m",
+      "bounds": {
+        "west": 22.44427900646039,
+        "south": -0.3678493013920437,
+        "east": 24.55572099353961,
+        "north": 1.7427923589378582
+      },
+      "rows": 16,
+      "columns": 16,
+      "valid_fraction": 1.0,
+      "slope_valid_fraction": 1.0,
+      "roughness_valid_fraction": 1.0,
+      "quality": "validation_only",
+      "scale": {
+        "dx_min_m": 4000.0,
+        "dx_max_m": 4000.0,
+        "dx_m": 4000.0,
+        "dy_m": 4000.0,
+        "width_m": 64000.0,
+        "height_m": 64000.0,
+        "roughness_rows": 3,
+        "roughness_columns": 3,
+        "roughness_width_m": 12000.0,
+        "roughness_height_m": 12000.0,
+        "roughness_requested_m": 12000.0,
+        "resampling": "area_average_local_aeqd_v1",
+        "native_dx_m": 1895.0729676589444,
+        "native_dy_m": 1895.2094015093426
+      },
+      "height": {
+        "count": 256,
+        "minimum": -2143.069290208307,
+        "maximum": -1318.3728769282345,
+        "mean": -1886.1999732405275,
+        "std": 196.42658517140148,
+        "median": -1931.9803995203688,
+        "p10": -2100.9255265930997,
+        "p25": -2048.942664826905,
+        "p75": -1754.7502767631822,
+        "p90": -1598.842382063479
+      },
+      "slope": {
+        "count": 196,
+        "minimum": 0.08516484065193904,
+        "maximum": 1.1336889435003719,
+        "mean": 0.6517798097054441,
+        "std": 0.24457197101128325,
+        "median": 0.6966355398940468,
+        "p10": 0.299570622652108,
+        "p25": 0.4546596607841852,
+        "p75": 0.8313602683548438,
+        "p90": 0.9656055851276542
+      },
+      "roughness": {
+        "count": 196,
+        "minimum": 9.161793055756988,
+        "maximum": 62.41017926094786,
+        "mean": 37.63450060348186,
+        "std": 12.886556497151147,
+        "median": 40.308179049476024,
+        "p10": 18.43998147150837,
+        "p25": 26.981878279847557,
+        "p75": 46.645166421255105,
+        "p90": 53.5329513598955
+      },
+      "artifacts": {
+        "geotiff": "data/processed/moon/luna/terrain.tif"
+      },
+      "warnings": [
+        "Resolución gruesa: validación regional, no interpretación geológica detallada.",
+        "La interpolación del producto no equivale a observaciones independientes por píxel.",
+        "La etiqueta no declara nodata; no se inventa un valor centinela.",
+        "Estadísticas exploratorias; no prueba de analogía geológica.",
+        "Rugosidad = desviación estándar local de altura; incluye tendencias de pendiente.",
+        "Se excluyen bordes y vecindarios con nodata; la ventana efectiva se registra en metros.",
+        "Agregación a malla física común; ranking exploratorio, con distinta densidad/calidad de observaciones de origen."
+      ],
+      "runtime": {
+        "python": "3.13.7",
+        "numpy": "2.5.4",
+        "rasterio": "1.5.2",
+        "gdal": "3.12.2"
+      }
+    },
+    "luna-tycho": {
+      "region_id": "luna-tycho",
+      "dataset_id": "moon-lola16",
+      "body": "moon",
+      "created_at": "2026-11-14T21:05:50.634931+00:00",
+      "region_fingerprint": "74e043a2c48c4daf599b31ad87bfac7394878152eee27ac128fbfe9a85ed5e49",
+      "source_sha256": "a511e40d7a3ea3275945b4da2a1df377133264fab0be94b7434b1cf8907254cb",
+      "label_sha256": "9aef29463ccc6ed3a3fbe0df3ecd830a99c69e16b564f455507dee2697096579",
+      "method_version": "common-grid-terrain-v2",
+      "slope_method": "central_difference_physical_distances",
+      "roughness_method": "local_population_std_height_full_window",
+      "height_unit": "m",
+      "slope_unit": "degree",
+      "roughness_unit": "m",
+      "vertical_reference": "height_above_reference_sphere_1737400_m",
+      "bounds": {
+        "west": 347.0243445537838,
+        "south": -44.355292358937845,
+        "east": 349.9756554462162,
+        "north": -42.235764305855824
+      },
+      "rows": 16,
+      "columns": 16,
+      "valid_fraction": 1.0,
+      "slope_valid_fraction": 1.0,
+      "roughness_valid_fraction": 1.0,
+      "quality": "validation_only",
+      "scale": {
+        "dx_min_m": 4000.0,
+        "dx_max_m": 4000.0,
+        "dx_m": 4000.0,
+        "dy_m": 4000.0,
+        "width_m": 64000.0,
+        "height_m": 64000.0,
+        "roughness_rows": 3,
+        "roughness_columns": 3,
+        "roughness_width_m": 12000.0,
+        "roughness_height_m": 12000.0,
+        "roughness_requested_m": 12000.0,
+        "resampling": "area_average_local_aeqd_v1",
+        "native_dx_m": 1379.2817724743256,
+        "native_dy_m": 1895.2094015093426
+      },
+      "height": {
+        "count": 256,
+        "minimum": -3466.543787789712,
+        "maximum": 1280.1714196960884,
+        "mean": -2216.5471677191017,
+        "std": 1268.4658799959143,
+        "median": -2693.6536217160274,
+        "p10": -3403.0811006938648,
+        "p25": -3211.755233954964,
+        "p75": -1434.584532475751,
+        "p90": -303.00307563469903
+      },
+      "slope": {
+        "count": 196,
+        "minimum": 0.10079240948496855,
+        "maximum": 17.94618765209619,
+        "mean": 6.3569831261725,
+        "std": 4.790574898712076,
+        "median": 5.723389934621417,
+        "p10": 0.6655876613245385,
+        "p25": 1.85627244148047,
+        "p75": 9.986020727081593,
+        "p90": 13.305762124479743
+      },
+      "roughness": {
+        "count": 196,
+        "minimum": 16.935056360075112,
+        "maximum": 978.5309931771394,
+        "mean": 378.94832575227406,
+        "std": 258.94425796009057,
+        "median": 377.4639865513251,
+        "p10": 63.305768853967535,
+        "p25": 136.41256983892882,
+        "p75": 559.614614273436,
+        "p90": 757.9964854411714
+      },
+      "artifacts": {
+        "geotiff": "data/processed/moon/luna-tycho/terrain.tif"
+      },
+      "warnings": [
+        "Resolución gruesa: validación regional, no interpretación geológica detallada.",
+        "La interpolación del producto no equivale a observaciones independientes por píxel.",
+        "La etiqueta no declara nodata; no se inventa un valor centinela.",
+        "Estadísticas exploratorias; no prueba de analogía geológica.",
+        "Rugosidad = desviación estándar local de altura; incluye tendencias de pendiente.",
+        "Se excluyen bordes y vecindarios con nodata; la ventana efectiva se registra en metros.",
+        "Agregación a malla física común; ranking exploratorio, con distinta densidad/calidad de observaciones de origen."
+      ],
+      "runtime": {
+        "python": "3.13.7",
+        "numpy": "2.5.4",
+        "rasterio": "1.5.2",
+        "gdal": "3.12.2"
+      }
+    }
+  }
+}
