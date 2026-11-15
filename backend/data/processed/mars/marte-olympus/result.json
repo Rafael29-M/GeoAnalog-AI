@@ -1,0 +1,120 @@
+{
+  "region": {
+    "id": "marte-olympus",
+    "name": "Olympus Mons, Marte",
+    "body": "mars",
+    "dataset_id": "mars-mola16",
+    "bounds": {
+      "west": 224.0,
+      "south": 16.4,
+      "east": 228.0,
+      "north": 20.4
+    },
+    "roughness_window_m": 12000.0,
+    "analysis_resolution_m": 4000.0,
+    "analysis_size_m": 64000.0,
+    "source_url": "https://www.jpl.nasa.gov/images/pia02982-olympus-mons/",
+    "purpose": "Ventana de 64 km por eje sobre Olympus Mons (~18.4°N, 226°E), el volcán más alto del sistema solar. Selección del prototipo, no límite geológico oficial."
+  },
+  "status": "processed",
+  "diagnostic": null,
+  "metrics": {
+    "region_id": "marte-olympus",
+    "dataset_id": "mars-mola16",
+    "body": "mars",
+    "created_at": "2026-11-14T21:05:50.758453+00:00",
+    "region_fingerprint": "03c4ee117d387a407df3f695c80185f363b4c43474bd0926e71c46bfde5b7f61",
+    "source_sha256": "d18d9b9ab8c5516d02e157dd2cde0f1d0d160c21940e953ba22391269a545e7b",
+    "label_sha256": "0f2bd919dddb86d83489a008d3007bd915507c892a0f22ce49ad5dd5d2fc7d8a",
+    "method_version": "common-grid-terrain-v2",
+    "slope_method": "central_difference_physical_distances",
+    "roughness_method": "local_population_std_height_full_window",
+    "height_unit": "m",
+    "slope_unit": "degree",
+    "roughness_unit": "m",
+    "vertical_reference": "MOLA_areoid_GMM3_degree_order_50",
+    "bounds": {
+      "west": 225.42921789827963,
+      "south": 17.859274873029136,
+      "east": 226.57078210172034,
+      "north": 18.939889559605014
+    },
+    "rows": 16,
+    "columns": 16,
+    "valid_fraction": 1.0,
+    "slope_valid_fraction": 1.0,
+    "roughness_valid_fraction": 1.0,
+    "quality": "validation_only",
+    "scale": {
+      "dx_min_m": 4000.0,
+      "dx_max_m": 4000.0,
+      "dx_m": 4000.0,
+      "dy_m": 4000.0,
+      "width_m": 64000.0,
+      "height_m": 64000.0,
+      "roughness_rows": 3,
+      "roughness_columns": 3,
+      "roughness_width_m": 12000.0,
+      "roughness_height_m": 12000.0,
+      "roughness_requested_m": 12000.0,
+      "resampling": "area_average_local_aeqd_v1",
+      "native_dx_m": 3515.0744990834633,
+      "native_dy_m": 3704.4613373579646
+    },
+    "height": {
+      "count": 256,
+      "minimum": 17803.835203895967,
+      "maximum": 20758.550427719776,
+      "mean": 19338.749233639664,
+      "std": 806.1778631629368,
+      "median": 19514.902131482908,
+      "p10": 18177.148705048152,
+      "p25": 18612.898783159086,
+      "p75": 19978.168698825757,
+      "p90": 20341.02044083742
+    },
+    "slope": {
+      "count": 196,
+      "minimum": 0.5470399335230935,
+      "maximum": 17.339081456832275,
+      "mean": 4.100311061681948,
+      "std": 3.317970811226637,
+      "median": 3.0086558650722877,
+      "p10": 1.1839656285047035,
+      "p25": 1.9438360067358391,
+      "p75": 5.197660400513843,
+      "p90": 9.422183436701975
+    },
+    "roughness": {
+      "count": 196,
+      "minimum": 47.76199774021747,
+      "maximum": 955.8954187711042,
+      "mean": 244.42484087079652,
+      "std": 185.46614043929918,
+      "median": 182.95103793686116,
+      "p10": 79.35288451371436,
+      "p25": 113.07902036992459,
+      "p75": 301.90645892500925,
+      "p90": 559.2869794145247
+    },
+    "artifacts": {
+      "geotiff": "data/processed/mars/marte-olympus/terrain.tif"
+    },
+    "warnings": [
+      "Resolución gruesa: validación regional, no interpretación geológica detallada.",
+      "La interpolación del producto no equivale a observaciones independientes por píxel.",
+      "La etiqueta no declara nodata; no se inventa un valor centinela.",
+      "HDR ENVI declara data ignore value=0, pero LBL/XML no lo declaran; se priorizan las etiquetas científicas y se conservan esos valores de topografía.",
+      "Estadísticas exploratorias; no prueba de analogía geológica.",
+      "Rugosidad = desviación estándar local de altura; incluye tendencias de pendiente.",
+      "Se excluyen bordes y vecindarios con nodata; la ventana efectiva se registra en metros.",
+      "Agregación a malla física común; ranking exploratorio, con distinta densidad/calidad de observaciones de origen."
+    ],
+    "runtime": {
+      "python": "3.13.7",
+      "numpy": "2.5.4",
+      "rasterio": "1.5.2",
+      "gdal": "3.12.2"
+    }
+  }
+}

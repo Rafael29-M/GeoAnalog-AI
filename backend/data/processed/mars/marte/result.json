@@ -1,0 +1,120 @@
+{
+  "region": {
+    "id": "marte",
+    "name": "Marte",
+    "body": "mars",
+    "dataset_id": "mars-mola16",
+    "bounds": {
+      "west": 137.0,
+      "south": -6.0,
+      "east": 139.0,
+      "north": -4.0
+    },
+    "roughness_window_m": 12000.0,
+    "analysis_resolution_m": 4000.0,
+    "analysis_size_m": 64000.0,
+    "source_url": "https://www.jpl.nasa.gov/images/pia12507-perspective-view-of-layered-mound-in-gale-crater-mars/",
+    "purpose": "Ventana regional de 64 km por eje centrada en esta caja; selección del prototipo, no media de todo el cuerpo ni límite geológico oficial."
+  },
+  "status": "processed",
+  "diagnostic": null,
+  "metrics": {
+    "region_id": "marte",
+    "dataset_id": "mars-mola16",
+    "body": "mars",
+    "created_at": "2026-11-14T21:05:49.285139+00:00",
+    "region_fingerprint": "d020ad3e8f11ce94ffd2ffab8f307bfa4ba5f977e748fd15d964212af995fc3a",
+    "source_sha256": "d18d9b9ab8c5516d02e157dd2cde0f1d0d160c21940e953ba22391269a545e7b",
+    "label_sha256": "0f2bd919dddb86d83489a008d3007bd915507c892a0f22ce49ad5dd5d2fc7d8a",
+    "method_version": "common-grid-terrain-v2",
+    "slope_method": "central_difference_physical_distances",
+    "roughness_method": "local_population_std_height_full_window",
+    "height_unit": "m",
+    "slope_unit": "degree",
+    "roughness_unit": "m",
+    "vertical_reference": "MOLA_areoid_GMM3_degree_order_50",
+    "bounds": {
+      "west": 137.45758506986175,
+      "south": -5.539889559605016,
+      "east": 138.54241493013825,
+      "north": -4.459896061471784
+    },
+    "rows": 16,
+    "columns": 16,
+    "valid_fraction": 1.0,
+    "slope_valid_fraction": 1.0,
+    "roughness_valid_fraction": 1.0,
+    "quality": "validation_only",
+    "scale": {
+      "dx_min_m": 4000.0,
+      "dx_max_m": 4000.0,
+      "dx_m": 4000.0,
+      "dy_m": 4000.0,
+      "width_m": 64000.0,
+      "height_m": 64000.0,
+      "roughness_rows": 3,
+      "roughness_columns": 3,
+      "roughness_width_m": 12000.0,
+      "roughness_height_m": 12000.0,
+      "roughness_requested_m": 12000.0,
+      "resampling": "area_average_local_aeqd_v1",
+      "native_dx_m": 3690.3647435618614,
+      "native_dy_m": 3704.4613373579646
+    },
+    "height": {
+      "count": 256,
+      "minimum": -4500.5258055865825,
+      "maximum": 352.17502199054144,
+      "mean": -2528.7194071311305,
+      "std": 1304.1694133807703,
+      "median": -2524.492769451662,
+      "p10": -4245.241679946537,
+      "p25": -3758.7099043133944,
+      "p75": -1613.4837835287717,
+      "p90": -515.7522917756442
+    },
+    "slope": {
+      "count": 196,
+      "minimum": 0.038773123851888414,
+      "maximum": 19.167029601853574,
+      "mean": 7.1422502194309,
+      "std": 4.448165839263757,
+      "median": 6.533748516806089,
+      "p10": 1.5892428025288627,
+      "p25": 3.466519179104246,
+      "p75": 9.931676687383165,
+      "p90": 14.000891044575582
+    },
+    "roughness": {
+      "count": 196,
+      "minimum": 25.264209353381236,
+      "maximum": 962.614474189245,
+      "mean": 425.78544884383706,
+      "std": 235.9637970952488,
+      "median": 380.6986430014693,
+      "p10": 130.2486150058059,
+      "p25": 237.51602660177954,
+      "p75": 594.1296862980785,
+      "p90": 792.2013990328563
+    },
+    "artifacts": {
+      "geotiff": "data/processed/mars/marte/terrain.tif"
+    },
+    "warnings": [
+      "Resolución gruesa: validación regional, no interpretación geológica detallada.",
+      "La interpolación del producto no equivale a observaciones independientes por píxel.",
+      "La etiqueta no declara nodata; no se inventa un valor centinela.",
+      "HDR ENVI declara data ignore value=0, pero LBL/XML no lo declaran; se priorizan las etiquetas científicas y se conservan esos valores de topografía.",
+      "Estadísticas exploratorias; no prueba de analogía geológica.",
+      "Rugosidad = desviación estándar local de altura; incluye tendencias de pendiente.",
+      "Se excluyen bordes y vecindarios con nodata; la ventana efectiva se registra en metros.",
+      "Agregación a malla física común; ranking exploratorio, con distinta densidad/calidad de observaciones de origen."
+    ],
+    "runtime": {
+      "python": "3.13.7",
+      "numpy": "2.5.4",
+      "rasterio": "1.5.2",
+      "gdal": "3.12.2"
+    }
+  }
+}

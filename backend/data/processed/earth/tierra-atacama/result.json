@@ -1,0 +1,118 @@
+{
+  "region": {
+    "id": "tierra-atacama",
+    "name": "Atacama, Chile",
+    "body": "earth",
+    "dataset_id": "earth-nasadem-s25w070",
+    "bounds": {
+      "west": -69.95,
+      "south": -24.69,
+      "east": -69.05,
+      "north": -24.01
+    },
+    "roughness_window_m": 12000.0,
+    "analysis_resolution_m": 4000.0,
+    "analysis_size_m": 64000.0,
+    "source_url": "https://astrobiology.nasa.gov/nai/annual-reports/2008/seti/planetary-scale-transition-from-abiotic-to-biotic-nitrogen-cycle/",
+    "purpose": "Ventana de 64 km por eje en Atacama. Centro -24.35,-69.5 seleccionado al revisar tres posiciones por cobertura NUM/SWB, sin usar la similitud para elegirlo. No corresponde a límites geológicos oficiales."
+  },
+  "status": "processed",
+  "diagnostic": null,
+  "metrics": {
+    "region_id": "tierra-atacama",
+    "dataset_id": "earth-nasadem-s25w070",
+    "body": "earth",
+    "created_at": "2026-11-14T21:05:49.927566+00:00",
+    "region_fingerprint": "2eb3694d6ee3d1d8af7b62ca21eabef71a5dd3904c9d2445ceb9d7968f0d4c05",
+    "source_sha256": "900ad34ea8fd8e72afae599e236b39d5bae2d74e2b4a80980106fa3cd90a1244",
+    "label_sha256": null,
+    "method_version": "common-grid-terrain-v2",
+    "slope_method": "central_difference_physical_distances",
+    "roughness_method": "local_population_std_height_full_window",
+    "height_unit": "m",
+    "slope_unit": "degree",
+    "roughness_unit": "m",
+    "vertical_reference": "EGM96_geoid",
+    "bounds": {
+      "west": -69.81606893873975,
+      "south": -24.638898836377365,
+      "east": -69.18393106126027,
+      "north": -24.060764298396123
+    },
+    "rows": 16,
+    "columns": 16,
+    "valid_fraction": 0.9921875,
+    "slope_valid_fraction": 0.9693877551020408,
+    "roughness_valid_fraction": 0.9387755102040817,
+    "quality": "validation_only",
+    "scale": {
+      "dx_min_m": 4000.0,
+      "dx_max_m": 4000.0,
+      "dx_m": 4000.0,
+      "dy_m": 4000.0,
+      "width_m": 64000.0,
+      "height_m": 64000.0,
+      "roughness_rows": 3,
+      "roughness_columns": 3,
+      "roughness_width_m": 12000.0,
+      "roughness_height_m": 12000.0,
+      "roughness_requested_m": 12000.0,
+      "resampling": "area_average_local_aeqd_v1",
+      "native_dx_m": 28.187414211923173,
+      "native_dy_m": 30.767583174166642
+    },
+    "height": {
+      "count": 254,
+      "minimum": 999.1109787084173,
+      "maximum": 3362.6081317363814,
+      "mean": 1874.0037093203518,
+      "std": 498.05476178932906,
+      "median": 1783.865453470065,
+      "p10": 1271.896847466785,
+      "p25": 1537.600987422341,
+      "p75": 2166.697504260237,
+      "p90": 2604.2478159575694
+    },
+    "slope": {
+      "count": 190,
+      "minimum": 0.30447835241002863,
+      "maximum": 6.279430048566205,
+      "mean": 1.9000719341548158,
+      "std": 1.1263070168971827,
+      "median": 1.7961900344434576,
+      "p10": 0.7167472669587115,
+      "p25": 0.9767090419597309,
+      "p75": 2.5011910754161653,
+      "p90": 3.2601989221169427
+    },
+    "roughness": {
+      "count": 184,
+      "minimum": 27.18095265915189,
+      "maximum": 323.4903490940591,
+      "mean": 113.84743655001132,
+      "std": 60.28147393792011,
+      "median": 103.92330180771705,
+      "p10": 45.3209995286086,
+      "p25": 65.62567671267725,
+      "p75": 145.01170203381872,
+      "p90": 194.58587699316934
+    },
+    "artifacts": {
+      "geotiff": "data/processed/earth/tierra-atacama/terrain.tif"
+    },
+    "warnings": [
+      "NASADEM combina varias fuentes y rellenos; una celda no implica una observación independiente.",
+      "Se aplican NUM y SWB: se excluyen agua y errores de fuente antes de agregar.",
+      "Estadísticas exploratorias; no prueba de analogía geológica.",
+      "Rugosidad = desviación estándar local de altura; incluye tendencias de pendiente.",
+      "Se excluyen bordes y vecindarios con nodata; la ventana efectiva se registra en metros.",
+      "Agregación a malla física común; ranking exploratorio, con distinta densidad/calidad de observaciones de origen."
+    ],
+    "runtime": {
+      "python": "3.13.7",
+      "numpy": "2.5.4",
+      "rasterio": "1.5.2",
+      "gdal": "3.12.2"
+    }
+  }
+}

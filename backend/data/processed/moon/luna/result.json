@@ -1,0 +1,119 @@
+{
+  "region": {
+    "id": "luna",
+    "name": "Luna",
+    "body": "moon",
+    "dataset_id": "moon-lola16",
+    "bounds": {
+      "west": 21.5,
+      "south": -1.3125,
+      "east": 25.5,
+      "north": 2.6875
+    },
+    "roughness_window_m": 12000.0,
+    "analysis_resolution_m": 4000.0,
+    "analysis_size_m": 64000.0,
+    "source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html",
+    "purpose": "Ventana regional de 64 km por eje centrada en esta caja; selección del prototipo, no media de todo el cuerpo ni límite geológico oficial."
+  },
+  "status": "processed",
+  "diagnostic": null,
+  "metrics": {
+    "region_id": "luna",
+    "dataset_id": "moon-lola16",
+    "body": "moon",
+    "created_at": "2026-11-14T21:05:49.150069+00:00",
+    "region_fingerprint": "bab1ab9b62b30f6902cd33f44ff6c0b4e9d56ca8cd0bcbec04b2b2c53b2b5466",
+    "source_sha256": "a511e40d7a3ea3275945b4da2a1df377133264fab0be94b7434b1cf8907254cb",
+    "label_sha256": "9aef29463ccc6ed3a3fbe0df3ecd830a99c69e16b564f455507dee2697096579",
+    "method_version": "common-grid-terrain-v2",
+    "slope_method": "central_difference_physical_distances",
+    "roughness_method": "local_population_std_height_full_window",
+    "height_unit": "m",
+    "slope_unit": "degree",
+    "roughness_unit": "m",
+    "vertical_reference": "height_above_reference_sphere_1737400_m",
+    "bounds": {
+      "west": 22.44427900646039,
+      "south": -0.3678493013920437,
+      "east": 24.55572099353961,
+      "north": 1.7427923589378582
+    },
+    "rows": 16,
+    "columns": 16,
+    "valid_fraction": 1.0,
+    "slope_valid_fraction": 1.0,
+    "roughness_valid_fraction": 1.0,
+    "quality": "validation_only",
+    "scale": {
+      "dx_min_m": 4000.0,
+      "dx_max_m": 4000.0,
+      "dx_m": 4000.0,
+      "dy_m": 4000.0,
+      "width_m": 64000.0,
+      "height_m": 64000.0,
+      "roughness_rows": 3,
+      "roughness_columns": 3,
+      "roughness_width_m": 12000.0,
+      "roughness_height_m": 12000.0,
+      "roughness_requested_m": 12000.0,
+      "resampling": "area_average_local_aeqd_v1",
+      "native_dx_m": 1895.0729676589444,
+      "native_dy_m": 1895.2094015093426
+    },
+    "height": {
+      "count": 256,
+      "minimum": -2143.069290208307,
+      "maximum": -1318.3728769282345,
+      "mean": -1886.1999732405275,
+      "std": 196.42658517140148,
+      "median": -1931.9803995203688,
+      "p10": -2100.9255265930997,
+      "p25": -2048.942664826905,
+      "p75": -1754.7502767631822,
+      "p90": -1598.842382063479
+    },
+    "slope": {
+      "count": 196,
+      "minimum": 0.08516484065193904,
+      "maximum": 1.1336889435003719,
+      "mean": 0.6517798097054441,
+      "std": 0.24457197101128325,
+      "median": 0.6966355398940468,
+      "p10": 0.299570622652108,
+      "p25": 0.4546596607841852,
+      "p75": 0.8313602683548438,
+      "p90": 0.9656055851276542
+    },
+    "roughness": {
+      "count": 196,
+      "minimum": 9.161793055756988,
+      "maximum": 62.41017926094786,
+      "mean": 37.63450060348186,
+      "std": 12.886556497151147,
+      "median": 40.308179049476024,
+      "p10": 18.43998147150837,
+      "p25": 26.981878279847557,
+      "p75": 46.645166421255105,
+      "p90": 53.5329513598955
+    },
+    "artifacts": {
+      "geotiff": "data/processed/moon/luna/terrain.tif"
+    },
+    "warnings": [
+      "Resolución gruesa: validación regional, no interpretación geológica detallada.",
+      "La interpolación del producto no equivale a observaciones independientes por píxel.",
+      "La etiqueta no declara nodata; no se inventa un valor centinela.",
+      "Estadísticas exploratorias; no prueba de analogía geológica.",
+      "Rugosidad = desviación estándar local de altura; incluye tendencias de pendiente.",
+      "Se excluyen bordes y vecindarios con nodata; la ventana efectiva se registra en metros.",
+      "Agregación a malla física común; ranking exploratorio, con distinta densidad/calidad de observaciones de origen."
+    ],
+    "runtime": {
+      "python": "3.13.7",
+      "numpy": "2.5.4",
+      "rasterio": "1.5.2",
+      "gdal": "3.12.2"
+    }
+  }
+}

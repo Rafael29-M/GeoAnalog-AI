@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "selection_notes": "Un objetivo Luna y uno Marte sobre sus archivos globales. Dos candidatas terrestres. Todas las ventanas usan la misma escala física. Se añaden tres ventanas adicionales: Cráter Tycho (Luna), Olympus Mons (Marte) y Valles Marineris (Marte).",
+  "regions": [
+    {
+      "id": "luna",
+      "name": "Luna",
+      "body": "moon",
+      "dataset_id": "moon-lola16",
+      "bounds": {
+        "west": 21.5,
+        "south": -1.3125,
+        "east": 25.5,
+        "north": 2.6875
+      },
+      "roughness_window_m": 12000.0,
+      "analysis_resolution_m": 4000.0,
+      "analysis_size_m": 64000.0,
+      "source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html",
+      "purpose": "Ventana regional de 64 km por eje centrada en esta caja; selección del prototipo, no media de todo el cuerpo ni límite geológico oficial."
+    },
+    {
+      "id": "marte",
+      "name": "Marte",
+      "body": "mars",
+      "dataset_id": "mars-mola16",
+      "bounds": {
+        "west": 137.0,
+        "south": -6.0,
+        "east": 139.0,
+        "north": -4.0
+      },
+      "roughness_window_m": 12000.0,
+      "analysis_resolution_m": 4000.0,
+      "analysis_size_m": 64000.0,
+      "source_url": "https://www.jpl.nasa.gov/images/pia12507-perspective-view-of-layered-mound-in-gale-crater-mars/",
+      "purpose": "Ventana regional de 64 km por eje centrada en esta caja; selección del prototipo, no media de todo el cuerpo ni límite geológico oficial."
+    },
+    {
+      "id": "tierra-atacama",
+      "name": "Atacama, Chile",
+      "body": "earth",
+      "dataset_id": "earth-nasadem-s25w070",
+      "bounds": {
+        "west": -69.95,
+        "east": -69.05,
+        "south": -24.69,
+        "north": -24.01
+      },
+      "roughness_window_m": 12000.0,
+      "analysis_resolution_m": 4000.0,
+      "analysis_size_m": 64000.0,
+      "source_url": "https://astrobiology.nasa.gov/nai/annual-reports/2008/seti/planetary-scale-transition-from-abiotic-to-biotic-nitrogen-cycle/",
+      "purpose": "Ventana de 64 km por eje en Atacama. Centro -24.35,-69.5 seleccionado al revisar tres posiciones por cobertura NUM/SWB, sin usar la similitud para elegirlo. No corresponde a límites geológicos oficiales."
+    },
+    {
+      "id": "tierra-arizona",
+      "name": "Arizona, Estados Unidos",
+      "body": "earth",
+      "dataset_id": "earth-nasadem-n35w112",
+      "bounds": {
+        "west": -112.0,
+        "south": 35.0,
+        "east": -111.0,
+        "north": 36.0
+      },
+      "roughness_window_m": 12000.0,
+      "analysis_resolution_m": 4000.0,
+      "analysis_size_m": 64000.0,
+      "source_url": "https://science.nasa.gov/solar-system/planetary-analogs/10-things-to-know-about-planetary-analogs/",
+      "purpose": "Ventana regional de 64 km por eje centrada en esta caja; selección del prototipo, no media de todo el cuerpo ni límite geológico oficial."
+    },
+    {
+      "id": "luna-tycho",
+      "name": "Cráter Tycho, Luna",
+      "body": "moon",
+      "dataset_id": "moon-lola16",
+      "bounds": {
+        "west": 346.5,
+        "south": -45.3,
+        "east": 350.5,
+        "north": -41.3
+      },
+      "roughness_window_m": 12000.0,
+      "analysis_resolution_m": 4000.0,
+      "analysis_size_m": 64000.0,
+      "source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html",
+      "purpose": "Ventana de 64 km por eje centrada en el cráter Tycho (~43.3°S, 11.4°W). Zona de alto impacto con rugosidad elevada; selección del prototipo, no límite geológico oficial."
+    },
+    {
+      "id": "marte-olympus",
+      "name": "Olympus Mons, Marte",
+      "body": "mars",
+      "dataset_id": "mars-mola16",
+      "bounds": {
+        "west": 224.0,
+        "south": 16.4,
+        "east": 228.0,
+        "north": 20.4
+      },
+      "roughness_window_m": 12000.0,
+      "analysis_resolution_m": 4000.0,
+      "analysis_size_m": 64000.0,
+      "source_url": "https://www.jpl.nasa.gov/images/pia02982-olympus-mons/",
+      "purpose": "Ventana de 64 km por eje sobre Olympus Mons (~18.4°N, 226°E), el volcán más alto del sistema solar. Selección del prototipo, no límite geológico oficial."
+    },
+    {
+      "id": "marte-valles",
+      "name": "Valles Marineris, Marte",
+      "body": "mars",
+      "dataset_id": "mars-mola16",
+      "bounds": {
+        "west": 298.0,
+        "south": -16.0,
+        "east": 302.0,
+        "north": -12.0
+      },
+      "roughness_window_m": 12000.0,
+      "analysis_resolution_m": 4000.0,
+      "analysis_size_m": 64000.0,
+      "source_url": "https://www.jpl.nasa.gov/images/pia00178-valles-marineris-hemisphere/",
+      "purpose": "Ventana de 64 km por eje en Coprates Chasma (~14°S, 300°E), sección central de Valles Marineris. Selección del prototipo, no límite geológico oficial."
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "region": {
+    "id": "luna-tycho",
+    "name": "Cráter Tycho, Luna",
+    "body": "moon",
+    "dataset_id": "moon-lola16",
+    "bounds": {
+      "west": 346.5,
+      "south": -45.3,
+      "east": 350.5,
+      "north": -41.3
+    },
+    "roughness_window_m": 12000.0,
+    "analysis_resolution_m": 4000.0,
+    "analysis_size_m": 64000.0,
+    "source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html",
+    "purpose": "Ventana de 64 km por eje centrada en el cráter Tycho (~43.3°S, 11.4°W). Zona de alto impacto con rugosidad elevada; selección del prototipo, no límite geológico oficial."
+  },
+  "status": "processed",
+  "diagnostic": null,
+  "metrics": {
+    "region_id": "luna-tycho",
+    "dataset_id": "moon-lola16",
+    "body": "moon",
+    "created_at": "2026-11-14T21:05:50.634931+00:00",
+    "region_fingerprint": "74e043a2c48c4daf599b31ad87bfac7394878152eee27ac128fbfe9a85ed5e49",
+    "source_sha256": "a511e40d7a3ea3275945b4da2a1df377133264fab0be94b7434b1cf8907254cb",
+    "label_sha256": "9aef29463ccc6ed3a3fbe0df3ecd830a99c69e16b564f455507dee2697096579",
+    "method_version": "common-grid-terrain-v2",
+    "slope_method": "central_difference_physical_distances",
+    "roughness_method": "local_population_std_height_full_window",
+    "height_unit": "m",
+    "slope_unit": "degree",
+    "roughness_unit": "m",
+    "vertical_reference": "height_above_reference_sphere_1737400_m",
+    "bounds": {
+      "west": 347.0243445537838,
+      "south": -44.355292358937845,
+      "east": 349.9756554462162,
+      "north": -42.235764305855824
+    },
+    "rows": 16,
+    "columns": 16,
+    "valid_fraction": 1.0,
+    "slope_valid_fraction": 1.0,
+    "roughness_valid_fraction": 1.0,
+    "quality": "validation_only",
+    "scale": {
+      "dx_min_m": 4000.0,
+      "dx_max_m": 4000.0,
+      "dx_m": 4000.0,
+      "dy_m": 4000.0,
+      "width_m": 64000.0,
+      "height_m": 64000.0,
+      "roughness_rows": 3,
+      "roughness_columns": 3,
+      "roughness_width_m": 12000.0,
+      "roughness_height_m": 12000.0,
+      "roughness_requested_m": 12000.0,
+      "resampling": "area_average_local_aeqd_v1",
+      "native_dx_m": 1379.2817724743256,
+      "native_dy_m": 1895.2094015093426
+    },
+    "height": {
+      "count": 256,
+      "minimum": -3466.543787789712,
+      "maximum": 1280.1714196960884,
+      "mean": -2216.5471677191017,
+      "std": 1268.4658799959143,
+      "median": -2693.6536217160274,
+      "p10": -3403.0811006938648,
+      "p25": -3211.755233954964,
+      "p75": -1434.584532475751,
+      "p90": -303.00307563469903
+    },
+    "slope": {
+      "count": 196,
+      "minimum": 0.10079240948496855,
+      "maximum": 17.94618765209619,
+      "mean": 6.3569831261725,
+      "std": 4.790574898712076,
+      "median": 5.723389934621417,
+      "p10": 0.6655876613245385,
+      "p25": 1.85627244148047,
+      "p75": 9.986020727081593,
+      "p90": 13.305762124479743
+    },
+    "roughness": {
+      "count": 196,
+      "minimum": 16.935056360075112,
+      "maximum": 978.5309931771394,
+      "mean": 378.94832575227406,
+      "std": 258.94425796009057,
+      "median": 377.4639865513251,
+      "p10": 63.305768853967535,
+      "p25": 136.41256983892882,
+      "p75": 559.614614273436,
+      "p90": 757.9964854411714
+    },
+    "artifacts": {
+      "geotiff": "data/processed/moon/luna-tycho/terrain.tif"
+    },
+    "warnings": [
+      "Resolución gruesa: validación regional, no interpretación geológica detallada.",
+      "La interpolación del producto no equivale a observaciones independientes por píxel.",
+      "La etiqueta no declara nodata; no se inventa un valor centinela.",
+      "Estadísticas exploratorias; no prueba de analogía geológica.",
+      "Rugosidad = desviación estándar local de altura; incluye tendencias de pendiente.",
+      "Se excluyen bordes y vecindarios con nodata; la ventana efectiva se registra en metros.",
+      "Agregación a malla física común; ranking exploratorio, con distinta densidad/calidad de observaciones de origen."
+    ],
+    "runtime": {
+      "python": "3.13.7",
+      "numpy": "2.5.4",
+      "rasterio": "1.5.2",
+      "gdal": "3.12.2"
+    }
+  }
+}

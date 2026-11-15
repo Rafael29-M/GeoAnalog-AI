@@ -1,0 +1,334 @@
+{
+  "schema_version": 1,
+  "datasets": [
+    {
+      "id": "moon-lola16",
+      "body": "moon",
+      "source": "NASA PDS Geosciences Node",
+      "instrument": "LOLA",
+      "product": "LDEM_16",
+      "version": "V3.1",
+      "source_url": "https://pds-geosciences.wustl.edu/missions/lro/lola.htm",
+      "format": "PDS3 IMG + LBL; XML PDS4 complementario",
+      "coverage": {
+        "west": 0.0,
+        "south": -90.0,
+        "east": 360.0,
+        "north": 90.0
+      },
+      "files": [
+        {
+          "filename": "ldem_16.lbl",
+          "local_path": "data/raw/moon/ldem_16.lbl",
+          "role": "label",
+          "url": "https://pds-geosciences.wustl.edu/lro/lro-l-lola-3-rdr-v1/lrolol_1xxx/data/lola_gdr/cylindrical/img/ldem_16.lbl",
+          "expected_bytes": 5121,
+          "size_bytes": 5121,
+          "downloaded_at": "2026-11-14T20:01:56.143444+00:00",
+          "sha256": "9aef29463ccc6ed3a3fbe0df3ecd830a99c69e16b564f455507dee2697096579"
+        },
+        {
+          "filename": "ldem_16.xml",
+          "local_path": "data/raw/moon/ldem_16.xml",
+          "role": "xml",
+          "url": "https://pds-geosciences.wustl.edu/lro/lro-l-lola-3-rdr-v1/lrolol_1xxx/data/lola_gdr/cylindrical/img/ldem_16.xml",
+          "expected_bytes": 11941,
+          "size_bytes": 11941,
+          "downloaded_at": "2026-11-14T20:01:56.520062+00:00",
+          "sha256": "011ebff260abb7c9a10a0f18601d7505e807b9a1b51d238b5587f5b02de59218"
+        },
+        {
+          "filename": "ldem_16.img",
+          "local_path": "data/raw/moon/ldem_16.img",
+          "role": "image",
+          "url": "https://pds-geosciences.wustl.edu/lro/lro-l-lola-3-rdr-v1/lrolol_1xxx/data/lola_gdr/cylindrical/img/ldem_16.img",
+          "expected_bytes": 33177600,
+          "size_bytes": 33177600,
+          "downloaded_at": "2026-11-14T20:04:49.018639+00:00",
+          "sha256": "a511e40d7a3ea3275945b4da2a1df377133264fab0be94b7434b1cf8907254cb"
+        }
+      ],
+      "metadata": {
+        "rows": 2880,
+        "columns": 5760,
+        "dtype": "<i2",
+        "byte_order": "little",
+        "unit": "m",
+        "scale": 0.5,
+        "applied_offset": 0.0,
+        "label_offset": 1737400.0,
+        "nodata": [],
+        "nodata_declared": false,
+        "nodata_provenance": null,
+        "coordinate_system": "MEAN EARTH/POLAR AXIS OF DE421",
+        "vertical_reference": "height_above_reference_sphere_1737400_m",
+        "resolution_degrees": 0.0625,
+        "nominal_resolution_m": 1895.21,
+        "reference_radius_m": 1737400.0,
+        "bounds": {
+          "west": 0.0,
+          "south": -90.0,
+          "east": 360.0,
+          "north": 90.0
+        },
+        "registration": "pixel",
+        "product_id": "LDEM_16",
+        "version": "V3.1",
+        "provenance": "ldem_16.lbl: IMAGE y IMAGE_MAP_PROJECTION; conversión específica del producto",
+        "raw_minimum": -17963.0,
+        "raw_maximum": 21371.0,
+        "declared_raw_minimum": -18150.0,
+        "declared_raw_maximum": 21580.0,
+        "warnings": [
+          "Resolución gruesa: validación regional, no interpretación geológica detallada.",
+          "La interpolación del producto no equivale a observaciones independientes por píxel.",
+          "La etiqueta no declara nodata; no se inventa un valor centinela."
+        ]
+      },
+      "status": "processed",
+      "diagnostic": null,
+      "inspected_at": "2026-11-14T20:48:30.698792+00:00",
+      "remote_subset": "Archivo global pequeño suficiente para validar. ODE GDS ofrece consultas regionales de observaciones; no es un recorte HTTP de este IMG."
+    },
+    {
+      "id": "mars-mola16",
+      "body": "mars",
+      "source": "NASA PDS Geosciences Node",
+      "instrument": "MOLA",
+      "product": "MEGT90N000EB",
+      "version": "2.0",
+      "source_url": "https://pds-geosciences.wustl.edu/missions/mgs/megdr.html",
+      "format": "PDS3 IMG + LBL; XML PDS4 y HDR ENVI complementarios",
+      "coverage": {
+        "west": 0.0,
+        "south": -90.0,
+        "east": 360.0,
+        "north": 90.0
+      },
+      "files": [
+        {
+          "filename": "megt90n000eb.lbl",
+          "local_path": "data/raw/mars/megt90n000eb.lbl",
+          "role": "label",
+          "url": "https://pds-geosciences.wustl.edu/mgs/urn-nasa-pds-mgs_mola_topography_derived/meg016/megt90n000eb.lbl",
+          "expected_bytes": null,
+          "size_bytes": 4813,
+          "downloaded_at": "2026-11-14T20:04:49.847807+00:00",
+          "sha256": "0f2bd919dddb86d83489a008d3007bd915507c892a0f22ce49ad5dd5d2fc7d8a"
+        },
+        {
+          "filename": "megt90n000eb.xml",
+          "local_path": "data/raw/mars/megt90n000eb.xml",
+          "role": "xml",
+          "url": "https://pds-geosciences.wustl.edu/mgs/urn-nasa-pds-mgs_mola_topography_derived/meg016/megt90n000eb.xml",
+          "expected_bytes": null,
+          "size_bytes": 15528,
+          "downloaded_at": "2026-11-14T20:04:50.994538+00:00",
+          "sha256": "c393221db2de31916b30113ce28841dd967456dadb9bf2735eb30496eb37afa2"
+        },
+        {
+          "filename": "megt90n000eb.hdr",
+          "local_path": "data/raw/mars/megt90n000eb.hdr",
+          "role": "header",
+          "url": "https://pds-geosciences.wustl.edu/mgs/urn-nasa-pds-mgs_mola_topography_derived/meg016/megt90n000eb.hdr",
+          "expected_bytes": null,
+          "size_bytes": 1060,
+          "downloaded_at": "2026-11-14T20:04:51.863658+00:00",
+          "sha256": "1d3d3bab68cf7f709db3f3c8dfb64cd1611392b7b6d170c5f55406aee2c783e7"
+        },
+        {
+          "filename": "megt90n000eb.img",
+          "local_path": "data/raw/mars/megt90n000eb.img",
+          "role": "image",
+          "url": "https://pds-geosciences.wustl.edu/mgs/urn-nasa-pds-mgs_mola_topography_derived/meg016/megt90n000eb.img",
+          "expected_bytes": 33177600,
+          "size_bytes": 33177600,
+          "downloaded_at": "2026-11-14T20:06:16.345215+00:00",
+          "sha256": "d18d9b9ab8c5516d02e157dd2cde0f1d0d160c21940e953ba22391269a545e7b"
+        }
+      ],
+      "metadata": {
+        "rows": 2880,
+        "columns": 5760,
+        "dtype": ">i2",
+        "byte_order": "big",
+        "unit": "m",
+        "scale": 1.0,
+        "applied_offset": 0.0,
+        "label_offset": null,
+        "nodata": [],
+        "nodata_declared": false,
+        "nodata_provenance": null,
+        "coordinate_system": "IAU2000 / PLANETOCENTRIC",
+        "vertical_reference": "MOLA_areoid_GMM3_degree_order_50",
+        "resolution_degrees": 0.0625,
+        "nominal_resolution_m": 3705.0,
+        "reference_radius_m": 3396000.0,
+        "bounds": {
+          "west": 0.0,
+          "south": -90.0,
+          "east": 360.0,
+          "north": 90.0
+        },
+        "registration": "pixel",
+        "product_id": "MEGT90N000EB.IMG",
+        "version": "2.0",
+        "provenance": "megt90n000eb.lbl: IMAGE y IMAGE_MAP_PROJECTION; conversión específica del producto",
+        "raw_minimum": -8177.0,
+        "raw_maximum": 21171.0,
+        "declared_raw_minimum": null,
+        "declared_raw_maximum": null,
+        "warnings": [
+          "Resolución gruesa: validación regional, no interpretación geológica detallada.",
+          "La interpolación del producto no equivale a observaciones independientes por píxel.",
+          "La etiqueta no declara nodata; no se inventa un valor centinela.",
+          "HDR ENVI declara data ignore value=0, pero LBL/XML no lo declaran; se priorizan las etiquetas científicas y se conservan esos valores de topografía."
+        ]
+      },
+      "status": "processed",
+      "diagnostic": null,
+      "inspected_at": "2026-11-14T20:48:31.065955+00:00",
+      "remote_subset": "Archivo global pequeño suficiente para validar. Revisar mosaicos MEG064/MEG128 por zona o consultas ODE GDS antes de aumentar resolución."
+    },
+    {
+      "id": "earth-nasadem-s25w070",
+      "body": "earth",
+      "source": "NASA LP DAAC / Earthdata",
+      "instrument": "SRTM (NASADEM)",
+      "product": "NASADEM_HGT.001",
+      "version": "001",
+      "source_url": "https://cmr.earthdata.nasa.gov/search/concepts/G2816781179-LPCLOUD.umm_json",
+      "format": "NASADEM HGT / ZIP",
+      "coverage": {
+        "west": -70.0,
+        "south": -25.0,
+        "east": -69.0,
+        "north": -24.0
+      },
+      "files": [
+        {
+          "filename": "NASADEM_HGT_s25w070.zip",
+          "local_path": "data/raw/earth/NASADEM_HGT_s25w070.zip",
+          "role": "image",
+          "url": "https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/NASADEM_HGT.001/NASADEM_HGT_s25w070/NASADEM_HGT_s25w070.zip",
+          "expected_bytes": 12390568,
+          "size_bytes": 12390568,
+          "downloaded_at": "2026-11-14T20:39:22.275115+00:00",
+          "sha256": "900ad34ea8fd8e72afae599e236b39d5bae2d74e2b4a80980106fa3cd90a1244"
+        }
+      ],
+      "metadata": {
+        "rows": 3601,
+        "columns": 3601,
+        "dtype": ">i2",
+        "byte_order": "big",
+        "unit": "m",
+        "scale": 1.0,
+        "applied_offset": 0.0,
+        "label_offset": null,
+        "nodata": [
+          -32768.0
+        ],
+        "nodata_declared": false,
+        "nodata_provenance": "GDAL SRTMHGT: -32768; fuera del rango válido [-32767,32767] de la guía NASADEM. La guía indica nodata N/A.",
+        "coordinate_system": "EPSG:4326 (WGS84)",
+        "vertical_reference": "EGM96_geoid",
+        "resolution_degrees": 0.0002777777777777778,
+        "nominal_resolution_m": null,
+        "reference_radius_m": null,
+        "bounds": {
+          "west": -70.0,
+          "south": -25.0,
+          "east": -69.0,
+          "north": -24.0
+        },
+        "registration": "grid_node",
+        "product_id": "NASADEM_HGT",
+        "version": "001",
+        "provenance": "NASADEM User Guide V1.3 (2025), nombre de mosaico y driver GDAL SRTMHGT",
+        "raw_minimum": 902.0,
+        "raw_maximum": 4340.0,
+        "declared_raw_minimum": null,
+        "declared_raw_maximum": null,
+        "warnings": [
+          "NASADEM combina varias fuentes y rellenos; una celda no implica una observación independiente.",
+          "Se aplican NUM y SWB: se excluyen agua y errores de fuente antes de agregar."
+        ]
+      },
+      "status": "processed",
+      "diagnostic": null,
+      "inspected_at": "2026-11-14T20:48:33.723946+00:00",
+      "remote_subset": "Dos mosaicos individuales seleccionados mediante CMR y descargados con Earthdata Login; recorte local."
+    },
+    {
+      "id": "earth-nasadem-n35w112",
+      "body": "earth",
+      "source": "NASA LP DAAC / Earthdata",
+      "instrument": "SRTM (NASADEM)",
+      "product": "NASADEM_HGT.001",
+      "version": "001",
+      "source_url": "https://cmr.earthdata.nasa.gov/search/concepts/G2816849633-LPCLOUD.umm_json",
+      "format": "NASADEM HGT / ZIP",
+      "coverage": {
+        "west": -112.0,
+        "south": 35.0,
+        "east": -111.0,
+        "north": 36.0
+      },
+      "files": [
+        {
+          "filename": "NASADEM_HGT_n35w112.zip",
+          "local_path": "data/raw/earth/NASADEM_HGT_n35w112.zip",
+          "role": "image",
+          "url": "https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/NASADEM_HGT.001/NASADEM_HGT_n35w112/NASADEM_HGT_n35w112.zip",
+          "expected_bytes": 10464865,
+          "size_bytes": 10464865,
+          "downloaded_at": "2026-11-14T20:39:22.285485+00:00",
+          "sha256": "0f822bd0de4264b6127366a0dea4ac6b1b1e84a6f6a1df88d0f1eb3a08b0dcc5"
+        }
+      ],
+      "metadata": {
+        "rows": 3601,
+        "columns": 3601,
+        "dtype": ">i2",
+        "byte_order": "big",
+        "unit": "m",
+        "scale": 1.0,
+        "applied_offset": 0.0,
+        "label_offset": null,
+        "nodata": [
+          -32768.0
+        ],
+        "nodata_declared": false,
+        "nodata_provenance": "GDAL SRTMHGT: -32768; fuera del rango válido [-32767,32767] de la guía NASADEM. La guía indica nodata N/A.",
+        "coordinate_system": "EPSG:4326 (WGS84)",
+        "vertical_reference": "EGM96_geoid",
+        "resolution_degrees": 0.0002777777777777778,
+        "nominal_resolution_m": null,
+        "reference_radius_m": null,
+        "bounds": {
+          "west": -112.0,
+          "south": 35.0,
+          "east": -111.0,
+          "north": 36.0
+        },
+        "registration": "grid_node",
+        "product_id": "NASADEM_HGT",
+        "version": "001",
+        "provenance": "NASADEM User Guide V1.3 (2025), nombre de mosaico y driver GDAL SRTMHGT",
+        "raw_minimum": 1109.0,
+        "raw_maximum": 3833.0,
+        "declared_raw_minimum": null,
+        "declared_raw_maximum": null,
+        "warnings": [
+          "NASADEM combina varias fuentes y rellenos; una celda no implica una observación independiente.",
+          "Se aplican NUM y SWB: se excluyen agua y errores de fuente antes de agregar."
+        ]
+      },
+      "status": "processed",
+      "diagnostic": null,
+      "inspected_at": "2026-11-14T20:48:35.943612+00:00",
+      "remote_subset": "Dos mosaicos individuales seleccionados mediante CMR y descargados con Earthdata Login; recorte local."
+    }
+  ]
+}

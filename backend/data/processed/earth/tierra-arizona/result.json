@@ -1,0 +1,118 @@
+{
+  "region": {
+    "id": "tierra-arizona",
+    "name": "Arizona, Estados Unidos",
+    "body": "earth",
+    "dataset_id": "earth-nasadem-n35w112",
+    "bounds": {
+      "west": -112.0,
+      "south": 35.0,
+      "east": -111.0,
+      "north": 36.0
+    },
+    "roughness_window_m": 12000.0,
+    "analysis_resolution_m": 4000.0,
+    "analysis_size_m": 64000.0,
+    "source_url": "https://science.nasa.gov/solar-system/planetary-analogs/10-things-to-know-about-planetary-analogs/",
+    "purpose": "Ventana regional de 64 km por eje centrada en esta caja; selección del prototipo, no media de todo el cuerpo ni límite geológico oficial."
+  },
+  "status": "processed",
+  "diagnostic": null,
+  "metrics": {
+    "region_id": "tierra-arizona",
+    "dataset_id": "earth-nasadem-n35w112",
+    "body": "earth",
+    "created_at": "2026-11-14T21:05:50.515755+00:00",
+    "region_fingerprint": "229637609b186117ea890aa388ee728c25818e17a41bdcffe3e91c3a18ebc7de",
+    "source_sha256": "0f822bd0de4264b6127366a0dea4ac6b1b1e84a6f6a1df88d0f1eb3a08b0dcc5",
+    "label_sha256": null,
+    "method_version": "common-grid-terrain-v2",
+    "slope_method": "central_difference_physical_distances",
+    "roughness_method": "local_population_std_height_full_window",
+    "height_unit": "m",
+    "slope_unit": "degree",
+    "roughness_unit": "m",
+    "vertical_reference": "EGM96_geoid",
+    "bounds": {
+      "west": -111.85396392396052,
+      "south": 35.21106178814236,
+      "east": -111.14603607603948,
+      "north": 35.78841191648686
+    },
+    "rows": 16,
+    "columns": 16,
+    "valid_fraction": 1.0,
+    "slope_valid_fraction": 1.0,
+    "roughness_valid_fraction": 1.0,
+    "quality": "validation_only",
+    "scale": {
+      "dx_min_m": 4000.0,
+      "dx_max_m": 4000.0,
+      "dx_m": 4000.0,
+      "dy_m": 4000.0,
+      "width_m": 64000.0,
+      "height_m": 64000.0,
+      "roughness_rows": 3,
+      "roughness_columns": 3,
+      "roughness_width_m": 12000.0,
+      "roughness_height_m": 12000.0,
+      "roughness_requested_m": 12000.0,
+      "resampling": "area_average_local_aeqd_v1",
+      "native_dx_m": 25.202608726178173,
+      "native_dy_m": 30.819378285710098
+    },
+    "height": {
+      "count": 256,
+      "minimum": 1289.2369493109986,
+      "maximum": 3217.2914299625218,
+      "mean": 1835.0171887442355,
+      "std": 372.80574179933893,
+      "median": 1792.4835583933523,
+      "p10": 1384.480836848729,
+      "p25": 1546.9851357127823,
+      "p75": 2054.6620287816577,
+      "p90": 2345.5139234431317
+    },
+    "slope": {
+      "count": 196,
+      "minimum": 0.08839776832085425,
+      "maximum": 7.3177267230779846,
+      "mean": 1.584672426305218,
+      "std": 1.2276485636588568,
+      "median": 1.3044707765873806,
+      "p10": 0.5369605008313916,
+      "p25": 0.8662778730261348,
+      "p75": 1.8292678565764504,
+      "p90": 2.85905600570981
+    },
+    "roughness": {
+      "count": 196,
+      "minimum": 24.685789727712386,
+      "maximum": 353.6265431294807,
+      "mean": 94.03547451790386,
+      "std": 65.82464516478773,
+      "median": 78.91465480449465,
+      "p10": 37.600362509898645,
+      "p25": 52.284998768874914,
+      "p75": 105.29107770677479,
+      "p90": 182.49017802802655
+    },
+    "artifacts": {
+      "geotiff": "data/processed/earth/tierra-arizona/terrain.tif"
+    },
+    "warnings": [
+      "NASADEM combina varias fuentes y rellenos; una celda no implica una observación independiente.",
+      "Se aplican NUM y SWB: se excluyen agua y errores de fuente antes de agregar.",
+      "Estadísticas exploratorias; no prueba de analogía geológica.",
+      "Rugosidad = desviación estándar local de altura; incluye tendencias de pendiente.",
+      "Se excluyen bordes y vecindarios con nodata; la ventana efectiva se registra en metros.",
+      "Agregación a malla física común; ranking exploratorio, con distinta densidad/calidad de observaciones de origen."
+    ],
+    "runtime": {
+      "python": "3.13.7",
+      "numpy": "2.5.4",
+      "rasterio": "1.5.2",
+      "gdal": "3.12.2"
+    }
+  }
+}

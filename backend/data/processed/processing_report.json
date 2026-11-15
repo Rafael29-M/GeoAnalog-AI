@@ -1,0 +1,37 @@
+[
+  {
+    "region_id": "luna",
+    "status": "processed",
+    "diagnostic": null
+  },
+  {
+    "region_id": "marte",
+    "status": "processed",
+    "diagnostic": null
+  },
+  {
+    "region_id": "tierra-atacama",
+    "status": "processed",
+    "diagnostic": null
+  },
+  {
+    "region_id": "tierra-arizona",
+    "status": "processed",
+    "diagnostic": null
+  },
+  {
+    "region_id": "luna-tycho",
+    "status": "processed",
+    "diagnostic": null
+  },
+  {
+    "region_id": "marte-olympus",
+    "status": "processed",
+    "diagnostic": null
+  },
+  {
+    "region_id": "marte-valles",
+    "status": "processed",
+    "diagnostic": null
+  }
+]
