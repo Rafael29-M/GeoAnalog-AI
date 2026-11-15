@@ -59,9 +59,23 @@ export default function App() {
     setCurrentView('compare');
   };
 
+  const handleNavClick = (view) => {
+    if (view === 'rover') {
+      setCurrentView('explorer');
+      setTimeout(() => {
+        document.getElementById('walle-cockpit')?.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    } else {
+      setCurrentView(view);
+    }
+  };
+
   const handleSelectRegionForRover = (regionId) => {
     setSelectedRegionId(regionId);
-    setCurrentView('rover');
+    setCurrentView('explorer');
+    setTimeout(() => {
+      document.getElementById('walle-cockpit')?.scrollIntoView({ behavior: 'smooth' });
+    }, 100);
   };
 
   return (
@@ -79,7 +93,7 @@ export default function App() {
             ['compare', 'Comparador', Disc],
             ['rover', 'Wall - E', Radio],
           ].map(([view, label, Icon]) => (
-            <button key={view} onClick={() => setCurrentView(view)} aria-current={currentView === view ? 'page' : undefined}>
+            <button key={view} onClick={() => handleNavClick(view)} aria-current={currentView === view ? 'page' : undefined}>
               <Icon size={16} strokeWidth={1.6} aria-hidden="true" /><span>{label}</span>
             </button>
           ))}

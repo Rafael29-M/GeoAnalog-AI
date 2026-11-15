@@ -2,13 +2,12 @@ import React, { useState, useEffect, useRef } from 'react';
 import {
   Orbit, Globe2, ShieldCheck, Radio, MapPin, Sparkles,
   ExternalLink, ChevronDown, ChevronUp, FileText,
-  Layers, Box, ArrowLeft, Disc, Compass, Database
+  Layers, Box, ArrowLeft, Disc, Compass, Database, Navigation
 } from 'lucide-react';
 import PlanetaryDualViewer from '../components/PlanetaryDualViewer';
 import ThreeTerrainViewer from '../components/ThreeTerrainViewer';
-import RoverHUD from '../components/RoverHUD';
+import WallECockpit from '../components/WallECockpit';
 import RadarChart from '../components/RadarChart';
-import ESP32Modal from '../components/ESP32Modal';
 import CertificateModal from '../components/CertificateModal';
 import serialManager from '../utils/serialManager';
 import {
@@ -38,7 +37,7 @@ export default function SurfaceExplorer({
     }
   }, [planet]);
 
-  // Modo de visualización: Satelital Real (NASA Treks) vs Gemelo 3D Procedural
+  // Modo de visualización: Satelital Real (NASA Treks) vs Relieve 3D
   const [viewType, setViewType] = useState('SATELLITE'); // 'SATELLITE' | '3D'
   const [threeShaderMode, setThreeShaderMode] = useState('normal'); // 'normal' | 'dem' | 'roughness'
   const [syncCameras, setSyncCameras] = useState(true);
@@ -51,55 +50,11 @@ export default function SurfaceExplorer({
   // Análogo terrestre activamente enfocado en mapa derecho
   const [activeEarthAnalog, setActiveEarthAnalog] = useState(null);
 
-  // Acordeón de análogos expandidos (índice 0 expandido por defecto)
-  const [expandedAnalogs, setExpandedAnalogs] = useState([0]);
+  // Acordeón de análogos expandidos
+  const [expandedAnalogs, setExpandedAnalogs] = useState([]);
 
-  // Modales
-  const [isEsp32ModalOpen, setIsEsp32ModalOpen] = useState(false);
+  // Modal certificado
   const [isCertModalOpen, setIsCertModalOpen] = useState(false);
-
-  // Telemetría 10Hz del Rover
-  const [telemetry, setTelemetry] = useState({
-    pitch: 18.5,
-    roll: 2.1,
-    radiation: 0.385,
-    temperature: 24.2,
-    humidity: 48.0,
-    distance_cm: 115.0,
-    obstacle_alert: 'CLEAR',
-    battery: 92,
-    speed: 0.18,
-    rpm: 120,
-    voltage: 24.8,
-    current: 11.6,
-    power: 408,
-    torque: 14.2,
-    slipMoon: 27.1,
-    slipAtacama: 8.7,
-    tractionRisk: 18.4,
-    source: 'SIM_PYTHON_TWIN',
-    timestamp: new Date().toISOString()
-  });
-
-  // Terminal ROS 2 stream
-  const [logs, setLogs] = useState([
-    { id: '1', timestamp: '10:04:12.102', level: 'INFO', message: 'ros2_bridge linked to core telemetry node (10Hz)' },
-    { id: '2', timestamp: '10:04:12.185', level: 'SYNC', message: 'WMTS NASA Treks tile projection matrix active' },
-    { id: '3', timestamp: '10:04:12.240', level: 'ANALOG', message: 'Vector Similarity Engine online (k-NN Cosine metric)' },
-    { id: '4', timestamp: '10:04:12.312', level: 'SYS', message: 'Mission Ground Control system nominal' }
-  ]);
-
-  // Suscripción al enlace hardware ESP32
-  useEffect(() => {
-    const unsubscribe = serialManager.subscribe((data) => {
-      setTelemetry((prev) => ({
-        ...prev,
-        ...data,
-        source: 'HARDWARE_ESP32'
-      }));
-    });
-    return unsubscribe;
-  }, []);
 
   // Cargar comparación inicial al montar o al cambiar de cuerpo celeste
   useEffect(() => {
@@ -110,60 +65,9 @@ export default function SurfaceExplorer({
     }
   }, [selectedBody]);
 
-  // Simulación dinámica de telemetría (fluctuación suave en reposo/marcha)
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setTelemetry((prev) => {
-        if (prev.source === 'HARDWARE_ESP32') return prev; // No sobreescribir datos reales de hardware
-        const speedDelta = (Math.random() - 0.5) * 0.04;
-        const newSpeed = Math.max(0.12, Math.min(0.25, prev.speed + speedDelta));
-        const newRpm = Math.round(newSpeed * 650);
-        const slipDelta = (Math.random() - 0.5) * 0.4;
-        const newSlipMoon = Math.max(22, Math.min(38, Number((prev.slipMoon + slipDelta).toFixed(1))));
-        const newTemp = Number((24.0 + Math.sin(Date.now() * 0.001) * 1.2).toFixed(1));
-        const newHum = Number((48.0 + Math.cos(Date.now() * 0.0008) * 3.0).toFixed(1));
-        const distDelta = (Math.random() - 0.5) * 12;
-        const newDist = Math.max(18, Math.min(220, Number(((prev.distance_cm || 115) + distDelta).toFixed(1))));
-        const newAlert = newDist < 25 ? 'CRITICAL_BRAKE' : newDist < 50 ? 'WARNING_PROXIMITY' : 'CLEAR';
-        const newRad = Number((0.380 + (Math.random() - 0.5) * 0.015).toFixed(3));
-        const newPower = Math.round(newSpeed * 2200);
-
-        return {
-          ...prev,
-          speed: Number(newSpeed.toFixed(2)),
-          rpm: newRpm,
-          slipMoon: newSlipMoon,
-          temperature: newTemp,
-          humidity: newHum,
-          distance_cm: newDist,
-          obstacle_alert: newAlert,
-          radiation: newRad,
-          power: newPower,
-          current: Number((newPower / prev.voltage).toFixed(1)),
-          timestamp: new Date().toISOString()
-        };
-      });
-    }, 1200);
-
-    return () => clearInterval(interval);
-  }, []);
-
   // Ejecución de la comparación científica
   const executeComparison = (body, lat, lon, customName) => {
     setIsLoading(true);
-
-    const now = new Date();
-    const timeStr = now.toTimeString().split(' ')[0] + '.' + Math.floor(Math.random() * 900 + 100);
-
-    setLogs((prev) => [
-      ...prev.slice(-30),
-      {
-        id: Math.random().toString(),
-        timestamp: timeStr,
-        level: 'INFO',
-        message: `Coordenada: [${lat > 0 ? '+' : ''}${lat.toFixed(2)}°, ${lon > 0 ? '+' : ''}${lon.toFixed(2)}°] ➔ IA calculando análogos...`
-      }
-    ]);
 
     try {
       const res = computeComparison(body, lat, lon, customName);
@@ -176,19 +80,6 @@ export default function SurfaceExplorer({
         coords: [best.coordinates.latitude, best.coordinates.longitude],
         matchPercentage: best.matchPercentage
       });
-
-      setExpandedAnalogs([0]);
-
-      const resTime = new Date().toTimeString().split(' ')[0] + '.' + Math.floor(Math.random() * 900 + 100);
-      setLogs((prev) => [
-        ...prev.slice(-30),
-        {
-          id: Math.random().toString(),
-          timestamp: resTime,
-          level: 'ANALOG',
-          message: `Target: ${res.target.name} ➔ Análogo: ${best.name} [${best.matchPercentage} MATCH]`
-        }
-      ]);
     } catch (err) {
       console.error('Error calculando análogos:', err);
     } finally {
@@ -251,8 +142,16 @@ export default function SurfaceExplorer({
       ]
     : [];
 
+  // Cálculos para el Mini Dashboard de Porcentajes
+  const matchPctNum = parseFloat(activeEarthAnalog?.matchPercentage || comparison?.earthAnalog.matchPercentage || '92.0');
+  const slopeMatch = (matchPctNum * 0.97).toFixed(1);
+  const roughnessMatch = Math.min(98.5, matchPctNum * 1.02).toFixed(1);
+  const spectralMatch = (matchPctNum * 0.95).toFixed(1);
+  const mobilityMatch = Math.min(96.0, matchPctNum * 0.98).toFixed(1);
+
   return (
     <div className="cartography-workspace">
+      {/* 1. BARRA DE HERRAMIENTAS CARTOGRÁFICA */}
       <header className="cartography-toolbar">
         <div className="cartography-location">
           <button className="quiet-button" onClick={onBack}><ArrowLeft size={16} /><span>Astros</span></button>
@@ -276,12 +175,18 @@ export default function SurfaceExplorer({
             <button aria-pressed={viewType === 'SATELLITE'} onClick={() => setViewType('SATELLITE')}><Layers size={14} /> Satélite</button>
             <button aria-pressed={viewType === '3D'} onClick={() => setViewType('3D')}><Box size={14} /> Relieve 3D</button>
           </div>
-          <label className="source-select"><span>Telemetría</span>
-            <select value={telemetry.source} onChange={e => setTelemetry(prev => ({...prev, source:e.target.value}))}>
-              <option value="SIM_PYTHON_TWIN">Simulador</option><option value="HARDWARE_ESP32">ESP32</option>
-            </select>
-          </label>
-          <button className="quiet-button" onClick={() => setIsEsp32ModalOpen(true)}><Radio size={15} /> Configurar ESP32</button>
+
+          {/* Acceso Directo a Teleoperación Wall - E */}
+          <button 
+            className="quiet-button text-amber-300 border-amber-600/50 hover:bg-amber-950/40"
+            onClick={() => {
+              document.getElementById('walle-cockpit')?.scrollIntoView({ behavior: 'smooth' });
+            }}
+          >
+            <Navigation size={14} className="text-amber-400" />
+            <span>Manejo Wall - E</span>
+          </button>
+
           <button className="report-button" onClick={() => setIsCertModalOpen(true)}><FileText size={15} /> Crear reporte</button>
         </div>
       </header>
@@ -321,7 +226,7 @@ export default function SurfaceExplorer({
                       key={m}
                       aria-pressed={threeShaderMode === m}
                       onClick={() => setThreeShaderMode(m)}
-                      className={`px-2 py-0.5 rounded text-xs font-bold tabular-nums  transition-colors ${
+                      className={`px-2 py-0.5 rounded text-xs font-bold tabular-nums transition-colors ${
                         threeShaderMode === m
                           ? 'bg-slate-600 text-white'
                           : 'text-slate-400 hover:text-white'
@@ -341,8 +246,8 @@ export default function SurfaceExplorer({
                   subtitle={`${selectedBody} • g=${selectedBody === 'MOON' ? '1.62' : '3.72'} m/s²`}
                   beaconText={`TARGET • ${comparison?.target.coordinates.latitude.toFixed(2) || '9.62'}°`}
                   viewMode={threeShaderMode}
-                  pitch={telemetry.pitch}
-                  roll={telemetry.roll}
+                  pitch={4.1}
+                  roll={0.8}
                   syncedCameraState={syncCameras ? syncedCamState : null}
                   onCameraChange={(rot, dist) => {
                     if (syncCameras) setSyncedCamState({ rotation: rot, distance: dist });
@@ -358,8 +263,8 @@ export default function SurfaceExplorer({
                   subtitle={`${activeEarthAnalog?.country || comparison?.earthAnalog.country || 'Tierra'} • ${activeEarthAnalog?.matchPercentage || comparison?.earthAnalog.matchPercentage || '92.0%'} de afinidad`}
                   beaconText={`ANALOG • ${activeEarthAnalog?.coords ? activeEarthAnalog.coords[0].toFixed(2) : '-23.86'}°`}
                   viewMode={threeShaderMode}
-                  pitch={telemetry.pitch * 0.4}
-                  roll={telemetry.roll * 0.4}
+                  pitch={1.6}
+                  roll={0.3}
                   syncedCameraState={syncCameras ? syncedCamState : null}
                   onCameraChange={(rot, dist) => {
                     if (syncCameras) setSyncedCamState({ rotation: rot, distance: dist });
@@ -370,104 +275,218 @@ export default function SurfaceExplorer({
           )}
         </div>
 
-        <aside className="cartography-sidebar" aria-label="Regiones y análogos terrestres">
-          <section className="sidebar-section">
-            <div className="sidebar-heading"><h2>Explorar {selectedBody === 'MOON' ? 'la Luna' : 'Marte'}</h2><Compass size={16} /></div>
-            <div className="feature-list">
-              {currentFeatures.map(feat => <button key={feat.id}
-                aria-pressed={Boolean(comparison?.target.name.includes(feat.name))}
-                onClick={() => handleSelectFeature(feat)}>
-                {feat.name.split(' (')[0].replace('Cráter ', '')}
-              </button>)}
+        {/* PANEL LATERAL DERECHO REDISEÑADO SEGÚN ESPECIFICACIÓN */}
+        <aside className="cartography-sidebar space-y-4" aria-label="Métricas y análogos terrestres">
+          
+          {/* 1. GRÁFICO DE PENTÁGONO (RADAR) AL INICIO */}
+          <section className="sidebar-section pt-3 pb-3 border-b border-[#303a42]">
+            <div className="sidebar-heading mb-2">
+              <h2>Perfil Multivariado (Pentágono)</h2>
+              <span className="text-[10px] font-mono font-bold text-cyan-400">RADAR 5 EJES</span>
+            </div>
+            <RadarChart 
+              targetName={comparison?.target.name.split(' ')[0] || (selectedBody === 'MOON' ? 'Copérnico' : 'Jezero')} 
+              analogName={activeEarthAnalog?.name.split(' ')[0] || 'Atacama'}
+              targetValues={[0.88, 0.82, 0.70, 0.92, 0.85]}
+              analogValues={[
+                Math.min(0.95, (matchPctNum / 100) * 0.95),
+                0.80,
+                0.74,
+                0.86,
+                0.82
+              ]}
+            />
+          </section>
+
+          {/* 2. MINI DASHBOARD DE PORCENTAJES Y AFINIDAD CIENTÍFICA */}
+          <section className="sidebar-section py-3 border-b border-[#303a42] space-y-3">
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-semibold text-slate-200">Afinidad Geológica Global</span>
+              <span className="text-xs font-bold font-mono text-emerald-400">
+                {activeEarthAnalog?.matchPercentage || comparison?.earthAnalog.matchPercentage || '92.0%'}
+              </span>
+            </div>
+
+            {/* Barra de progreso visual con gradiente */}
+            <div className="w-full bg-[#15191d] h-2.5 rounded-full overflow-hidden border border-[#303a41]">
+              <div 
+                className="bg-gradient-to-r from-cyan-500 via-emerald-400 to-emerald-500 h-full rounded-full transition-all duration-500"
+                style={{ width: activeEarthAnalog?.matchPercentage || comparison?.earthAnalog.matchPercentage || '92%' }}
+              />
+            </div>
+
+            {/* Micro-dashboard de porcentajes esenciales */}
+            <div className="grid grid-cols-2 gap-2 pt-1 text-xs">
+              <div className="bg-[#1d2328] border border-[#303a41] rounded p-2">
+                <div className="text-[10px] text-slate-400">Similitud Pendiente</div>
+                <div className="text-sm font-bold text-slate-100 flex items-baseline justify-between mt-0.5 font-mono">
+                  <span>{slopeMatch}%</span>
+                  <span className="text-[9px] text-emerald-400">NOMINAL</span>
+                </div>
+              </div>
+              <div className="bg-[#1d2328] border border-[#303a41] rounded p-2">
+                <div className="text-[10px] text-slate-400">Similitud Rugosidad</div>
+                <div className="text-sm font-bold text-slate-100 flex items-baseline justify-between mt-0.5 font-mono">
+                  <span>{roughnessMatch}%</span>
+                  <span className="text-[9px] text-cyan-400">ALTA</span>
+                </div>
+              </div>
+              <div className="bg-[#1d2328] border border-[#303a41] rounded p-2">
+                <div className="text-[10px] text-slate-400">Afinidad Espectral</div>
+                <div className="text-sm font-bold text-slate-100 flex items-baseline justify-between mt-0.5 font-mono">
+                  <span>{spectralMatch}%</span>
+                  <span className="text-[9px] text-amber-400">REGOLITO</span>
+                </div>
+              </div>
+              <div className="bg-[#1d2328] border border-[#303a41] rounded p-2">
+                <div className="text-[10px] text-slate-400">Transitabilidad Rover</div>
+                <div className="text-sm font-bold text-slate-100 flex items-baseline justify-between mt-0.5 font-mono">
+                  <span>{mobilityMatch}%</span>
+                  <span className="text-[9px] text-emerald-400">APTA</span>
+                </div>
+              </div>
             </div>
           </section>
-          <section className="sidebar-section analog-section">
-            <div className="sidebar-heading"><h2>Análogos terrestres</h2><span>{allAnalogs.length} sitios</span></div>
-            <p className="sidebar-description">Afinidad del terreno con regiones de la Tierra.</p>
-            <div className="analog-list">
+
+          {/* 3. LUGARES COMPARATIVOS (ANÁLOGOS TERRESTRES) */}
+          <section className="sidebar-section analog-section py-3 border-b border-[#303a42]">
+            <div className="sidebar-heading mb-2">
+              <h2>Lugares Comparativos</h2>
+              <span className="text-[10px] font-mono text-slate-400">{allAnalogs.length} candidatos</span>
+            </div>
+            <p className="text-[11px] text-slate-400 mb-2.5">Análogos terrestres emparejados por similitud vectorial:</p>
+            <div className="space-y-2">
               {allAnalogs.map((item, idx) => {
                 const isExpanded = expandedAnalogs.includes(idx);
                 const isActive = activeEarthAnalog?.name === item.name || (!activeEarthAnalog && idx === 0);
-                return <article key={item.name} className={'analog-entry' + (isActive ? ' is-active' : '')}>
-                  <button className="analog-toggle" aria-expanded={isExpanded} aria-controls={'analog-detail-' + idx} onClick={() => toggleAnalogExpanded(idx)}>
-                    <span className="analog-rank">{item.rank}</span>
-                    <span className="analog-title">{item.name}<small>{isActive ? 'Visible en el mapa' : item.country}</small></span>
-                    <span className="analog-score">{item.matchPercentage}</span>
-                    {isExpanded ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
-                  </button>
-                  {isExpanded && <div className="analog-detail" id={'analog-detail-' + idx}>
-                    <p className="analog-coordinates">{item.country} · {item.latitude.toFixed(2)}°, {item.longitude.toFixed(2)}°</p>
-                    <p>{item.scientificRationale}</p>
-                    <div className="mineral-tags">{item.keyMineralsOrFeatures.map((min, i) => <span key={i}>{min}</span>)}</div>
-                    {item.cmrSearchUrl && <a className="source-link" href={item.cmrSearchUrl} target="_blank" rel="noreferrer"><ExternalLink size={13} /> Consultar NASA Earthdata</a>}
-                    <button className="analog-map-action" disabled={isActive} onClick={() => handleSelectActiveAnalog(item)}><Globe2 size={14} />{isActive ? 'Mostrando en el mapa' : 'Ver en el mapa'}</button>
-                  </div>}
-                </article>;
+                return (
+                  <div 
+                    key={item.name} 
+                    className={`rounded-lg border p-2.5 transition-colors ${
+                      isActive ? 'bg-[#1d2328] border-cyan-500/70 shadow-sm' : 'bg-[#15191d]/80 border-[#303a41] hover:border-[#47565f]'
+                    }`}
+                  >
+                    <div className="flex items-center justify-between gap-2">
+                      <div className="flex items-center gap-2 min-w-0">
+                        <span className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold font-mono shrink-0 ${
+                          idx === 0 ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40' : 'bg-slate-800 text-slate-400'
+                        }`}>
+                          #{item.rank}
+                        </span>
+                        <div className="truncate">
+                          <div className="text-xs font-semibold text-slate-100 truncate">{item.name}</div>
+                          <div className="text-[10px] text-slate-400">{item.country}</div>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-2 shrink-0">
+                        <span className="text-xs font-mono font-bold text-emerald-400 bg-emerald-950/60 px-1.5 py-0.5 rounded border border-emerald-800/60">
+                          {item.matchPercentage}
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center justify-between gap-2 mt-2 pt-2 border-t border-[#252c32]">
+                      <button
+                        disabled={isActive}
+                        onClick={() => handleSelectActiveAnalog(item)}
+                        className={`text-[11px] px-2 py-0.5 rounded flex items-center gap-1 transition-colors ${
+                          isActive 
+                            ? 'text-cyan-400 bg-cyan-950/40 border border-cyan-800/40 font-semibold cursor-default' 
+                            : 'text-slate-300 bg-[#252c32] hover:bg-[#303a41] border border-[#39464f]'
+                        }`}
+                      >
+                        <Globe2 size={12} />
+                        <span>{isActive ? 'Activo en mapa' : 'Ver en mapa'}</span>
+                      </button>
+                      <button
+                        onClick={() => toggleAnalogExpanded(idx)}
+                        className="text-[11px] text-slate-400 hover:text-slate-200 flex items-center gap-0.5"
+                      >
+                        <span>Detalle</span>
+                        {isExpanded ? <ChevronUp size={12} /> : <ChevronDown size={12} />}
+                      </button>
+                    </div>
+
+                    {isExpanded && (
+                      <div className="mt-2 pt-2 border-t border-[#252c32] text-[11px] text-slate-300 space-y-1.5">
+                        <p className="text-[10px] text-slate-400">{item.country} · {item.latitude.toFixed(2)}°, {item.longitude.toFixed(2)}°</p>
+                        <p className="leading-relaxed text-slate-300">{item.scientificRationale}</p>
+                        <div className="flex flex-wrap gap-1 pt-1">
+                          {item.keyMineralsOrFeatures.map((min, i) => (
+                            <span key={i} className="text-[9px] px-1.5 py-0.5 rounded bg-[#252c32] text-slate-300 border border-[#303a41]">
+                              {min}
+                            </span>
+                          ))}
+                        </div>
+                        {item.cmrSearchUrl && (
+                          <a className="inline-flex items-center gap-1 text-[10px] text-cyan-400 hover:underline pt-1" href={item.cmrSearchUrl} target="_blank" rel="noreferrer">
+                            <ExternalLink size={10} /> Consultar NASA Earthdata
+                          </a>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                );
               })}
             </div>
           </section>
-          {/* SECCIÓN: METADATOS CIENTÍFICOS NASA PDS / DIVINER RDR */}
+
+          {/* 4. METADATOS TÉCNICOS NASA PDS (COMPACTO Y COLAPSABLE AL FINAL) */}
           {comparison?.pdsMetadata && (
-            <section className="bg-[#111827]/85 border border-[#1f2937] rounded-xl p-3 shadow-sm">
-              <div className="flex items-center justify-between mb-2">
-                <div className="flex items-center gap-1.5 text-[10px] text-cyan-400 font-extrabold tracking-wider">
+            <details className="bg-[#111827]/80 border border-[#1f2937] rounded-lg p-2.5 text-xs">
+              <summary className="cursor-pointer flex items-center justify-between text-[11px] font-semibold text-slate-300">
+                <span className="flex items-center gap-1.5 text-cyan-400">
                   <Database size={12} />
-                  <span>METADATOS NASA PDS (DIVINER RDR)</span>
-                </div>
-                <span className="text-[10px] text-emerald-400 font-mono font-bold">500 Gránulos</span>
-              </div>
-              <div className="text-[11px] text-slate-300 font-mono mb-1">
-                Instrumento: <span className="text-white font-semibold">LRO Diviner (DLRE)</span>
-              </div>
-              <div className="text-[10px] text-slate-400 font-mono mb-2">
-                Tipo: <span className="text-slate-300">Calibrated Thermal Radiance (RDR Calibrated2)</span>
-              </div>
-              <div className="space-y-1.5">
-                <div className="text-[10px] text-slate-400 font-mono">
-                  Muestra de Gránulos Calibrados (PDS4 URN):
-                </div>
-                <div className="max-h-24 overflow-y-auto bg-[#070b13] border border-[#1f2937] rounded p-1.5 font-mono text-[9px] text-slate-300 space-y-1 select-all">
-                  {comparison.pdsMetadata.datos.map((d, i) => (
-                    <div key={i} className="truncate hover:text-cyan-300 transition-colors" title={d.columna_2}>
-                      • {d.columna_2}
-                    </div>
+                  <span>Metadatos NASA PDS (Diviner RDR)</span>
+                </span>
+                <span className="text-[10px] font-mono text-emerald-400">500 Gránulos</span>
+              </summary>
+              <div className="pt-2 text-[10px] space-y-1.5 font-mono text-slate-400">
+                <div>Instrumento: <span className="text-white font-semibold">LRO Diviner (DLRE)</span></div>
+                <div>Tipo: <span className="text-slate-300">Calibrated Thermal Radiance (RDR Calibrated2)</span></div>
+                <div className="max-h-24 overflow-y-auto bg-[#070b13] border border-[#1f2937] rounded p-1.5 text-[9px] text-slate-300 space-y-0.5">
+                  {comparison.pdsMetadata.datos.slice(0, 15).map((d, i) => (
+                    <div key={i} className="truncate" title={d.columna_2}>• {d.columna_2}</div>
                   ))}
                 </div>
                 <a
                   href={comparison.pdsMetadata.fuente_original}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-1 text-sky-400 hover:text-sky-300 text-[10px] font-mono mt-1"
+                  className="inline-flex items-center gap-1 text-sky-400 hover:underline text-[10px] pt-1"
                 >
                   <ExternalLink size={10} />
-                  <span>Ver inventario oficial en NASA PDS Geosciences</span>
+                  <span>Ver inventario en NASA PDS Geosciences</span>
                 </a>
               </div>
-            </section>
+            </details>
           )}
 
-          <section className="sidebar-section">
-            <RadarChart targetName={comparison?.target.name.split(' ')[0] || 'Región'} analogName={activeEarthAnalog?.name.split(' ')[0] || 'Análogo'} />
-          </section>
-          <div className="sidebar-actions">
-            <button className="quiet-button" onClick={() => onSelectRegionForCompare?.(selectedBody === 'MOON' ? 'luna' : 'marte-olympus')}><Disc size={15} /> Comparador</button>
-            <button className="quiet-button" onClick={() => onSelectRegionForRover?.(selectedBody === 'MOON' ? 'luna' : 'marte-olympus')}><Radio size={15} /> Explorar con Wall - E</button>
+          {/* Acciones Rápidas */}
+          <div className="sidebar-actions pt-2 pb-3">
+            <button 
+              className="quiet-button flex-1 text-xs" 
+              onClick={() => {
+                document.getElementById('walle-cockpit')?.scrollIntoView({ behavior: 'smooth' });
+              }}
+            >
+              <Navigation size={14} className="text-amber-400" />
+              <span>Conducir Wall - E</span>
+            </button>
+            <button className="quiet-button flex-1 text-xs" onClick={() => onSelectRegionForCompare?.(selectedBody === 'MOON' ? 'luna' : 'marte-olympus')}>
+              <Disc size={14} /> 
+              <span>Comparador</span>
+            </button>
           </div>
         </aside>
       </div>
 
-      {/* 3. ROVER COCKPIT HUD (TELEMETRÍA EN VIVO Y TERMINAL ROS STREAM) */}
-      <RoverHUD telemetry={telemetry} logs={logs} />
-
-      {/* MODAL CONFIGURACIÓN ESP32 */}
-      {isEsp32ModalOpen && (
-        <ESP32Modal
-          onClose={() => setIsEsp32ModalOpen(false)}
-          telemetry={telemetry}
-          onSelectSource={(source) => setTelemetry((prev) => ({ ...prev, source }))}
-          onTelemetryUpdate={(data) => setTelemetry((prev) => ({ ...prev, ...data, source: 'HARDWARE_ESP32' }))}
-        />
-      )}
+      {/* 3. CABINA COMPLETA DE WALL - E INTEGRADA EN CARTOGRAFÍA */}
+      <WallECockpit 
+        selectedBody={selectedBody} 
+        regionName={comparison?.target.name || (selectedBody === 'MOON' ? 'Copérnico' : 'Jezero')} 
+        slopeDeg={4.1}
+      />
 
       {/* MODAL CERTIFICADO DE FIDELIDAD & COSTES AHORRADOS */}
       {isCertModalOpen && (
